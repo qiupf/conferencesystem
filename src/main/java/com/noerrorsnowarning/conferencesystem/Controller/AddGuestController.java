@@ -1,0 +1,43 @@
+package com.noerrorsnowarning.conferencesystem.Controller;
+
+import com.noerrorsnowarning.conferencesystem.Service.GuestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
+@RequestMapping("/")
+public class AddGuestController {
+
+    private GuestService guestService;
+
+    @Autowired
+    AddGuestController(GuestService guestService) {
+        this.guestService = guestService;
+    }
+
+    @RequestMapping(value = "/addGuest", method = RequestMethod.POST)
+    public String addGuest(HttpServletRequest request, Model model) {
+
+
+        //获取数据
+        String name = request.getParameter("name");
+        String identity = request.getParameter("identity");
+
+        //返回添加是否成功
+        int result = guestService.addGuest(10, name, identity);
+
+        if (result == 1) {
+            model.addAttribute("message", "插入成功");
+        } else {
+            model.addAttribute("message", "插入失败");
+        }
+
+        return "/html/addGuest";
+    }
+
+}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<form id="Form1" th:action="@{/addGuest}" method="post">
+<div style="text-align: left">
+	<span style="font-size: 12px;color: red" th:text="${message}"/>
+	<br>
+	姓名：<input name="name" type="text" /><br />    <!-----编号默认显示还未编的---->
+	身份：<input name="identity" type="text" /><br />
+	<input type="submit" value="确认" />
+	<input type="reset" value="重置" />
+</div>
+</form>
+</body>
+</html>

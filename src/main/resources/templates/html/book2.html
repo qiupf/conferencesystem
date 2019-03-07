@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+//*为必填项<br><br>
+
+	会议室编号:001（不可更改）<br>
+	会议室地址:广B101（不可更改）<br>
+	*会议日期:<input type="date">（如果使用 精确查找 预定，该项为空，如果使用 查找 预定，该项为查找时的日期，可更改）<br>
+	*会议室占用时间：<input type="time"> <input type="time">（同上）<br>
+	*会议名称：<input type="text"><br>
+	*主会人:<select>
+		<option value="白玉婷">白玉婷</option>
+		<option value="张慧群">张慧群</option>
+		</select> (默认是申请人，可更改）<br>
+	*会议开始时间：<input type="time">（默认是开始占用时间和结束占用时间，可更改）<br>
+	*会议结束时间：<input type="time"><br>
+	参会人数：10（不可更改，由参会人人数和外宾人数相加得到）<br>
+	参会人:<span id ="001_participant">白玉婷</span><button id="add" onClick="add('001')">添加</button><br>
+	<div id="staff" style="visibility : hidden">
+		部门：
+		<select>
+		<option value="白玉婷">xx部</option>
+		<option value="张慧群">张慧群</option>
+		</select>
+	</div> 
+	外宾人数：<input type="number" value="0"><br>
+	是否签到: <input type="checkbox"><br>
+	签到开始时间: <input type="time"><br>
+	<input type="submit"/>
+</body>
+</html>

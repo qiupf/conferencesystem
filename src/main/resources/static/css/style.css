@@ -1,0 +1,83 @@
+/* CSS Document */
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select,iframe {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+	/*background:#2E363F;*/
+	font-family: 'Microsoft Yahei';
+}
+
+.header {
+	background-color: #1f262d;
+	height: 50px;
+	width: 100%;
+}
+
+.header h1{
+	float:left;
+
+	
+}
+.header a{
+	color:#A4D3EE;
+	text-decoration:none;
+	outline:none;
+	padding-left: 20px;
+	padding-top: 10px;
+	font-size: 20px;
+}
+
+#login {
+	float: right;
+	padding-right: 20px;
+	padding-top: 14px;
+	font-size: 16px;
+}
+
+.header a:hover {
+	text-decoration: none;
+}
+
+#menu {
+	background-color: #2E363F;
+	width: 180px;
+	height: 700px;
+	color:#A4D3EE;
+	padding-left: 30px;
+	padding-top: 10px;
+	float:left;
+	z-index: 0;
+}
+
+.menu1{
+	padding-top: 5px;
+	list-style-type: none;
+}
+
+.menu2{
+	padding-top: 10px;;
+	padding-left: 20px;
+	list-style-type: none;
+}
+
+.menu3{
+	height: 30px;
+}
+
+#page{
+	background-color: #EEEEEE;
+	position:absolute;
+	padding-left: 250px;
+	width: 1269px;
+	z-index: -10;
+}
+
+.page1{
+	
+	width: 100%;
+	height: 700px;
+}
+

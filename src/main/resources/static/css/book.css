@@ -1,0 +1,75 @@
+/* CSS Document */
+
+body{
+	width: 800px;
+	font-family: 'Microsoft Yahei';
+}
+
+.search{
+	width: 800px;
+	border:#9897FF,thin,solid;
+	padding-left: 50px;
+}
+
+.choice{
+	width:800px;
+	padding-left: 50px;
+}
+
+.txt{
+	float:left;
+	padding-top: 20px;
+	padding-right: 50px;
+	height: 60px;
+}
+
+.equipment{
+	width: 800px;
+	float:left;
+	padding-top: 20px;
+	padding-left: 50px;
+	height: 60px;
+}
+
+.equipment0{
+	width:300px;
+	float:left;
+}
+
+.show{
+	float:left;
+}
+
+#find{
+	margin-left: 50px;
+	float:left;
+}
+
+#data_txt{
+	width: 50px;
+	height: 20px;
+}
+.mytable{
+	padding-left: 50px;
+	text-align: center;
+}
+
+.th1,.th2{
+	width: 100px;
+}
+
+.th3{
+	width: 180px;
+}
+
+.th4{
+	width: 50px;
+}
+
+.th5{
+	width: 150px;
+}
+
+.th6{
+	width: 80px;
+}

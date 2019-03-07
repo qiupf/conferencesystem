@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+	
+<body>
+	<img src="/img/001.png">
+	<ul>
+		<li>姓名：<span th:text="${info.Sname}"/></li>
+		<li>工号：<span th:text="${info.StaffID}"/></li>
+		<li>性别：<span th:text="${info.Ssex}"/></li>
+		<li>职位：<span th:text="${info.Spost}"/></li>
+		<li>工龄：</li>
+		<li>手机号码：xxxxxxxx</li>
+		<li>邮箱地址：xxxxxxxx</li>
+		<li>微信号:xxx</li>
+		//以上信息直接由管理员从人事部获得，不可更改
+	</ul>
+
+</body>
+</html>

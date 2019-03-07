@@ -1,0 +1,73 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+	<div class="header">
+   	  <h1><a href="index.html">智能会议室管理系统</a></h1>
+		<a id="login" th:text="${session.Sname}">登录</a>
+    </div>
+    <div id="menu">
+    	<ul>
+    		<li class="menu1" onClick="page(1)">
+    			预订
+    		</li>
+    		<li class="menu1">
+    			我的会议
+    			<ul class="menu2">
+    				<li class="menu3"  onClick="page(2)">已预订会议室</li>
+    				<li class="menu3"  onClick="page(3)">未参加会议</li>
+    				<li class="menu3"  onClick="page(4)">历史会议</li>
+    			</ul>
+    		</li>
+    		<li class="menu1" onClick="page(5)">
+    			个人信息
+    			<ul class="menu2">
+    				<li class="menu3">查看个人信息</li>
+    				<li class="menu3">账号安全</li>
+    			</ul>
+    		</li>
+    		<li class="menu1">
+    			温馨服务
+    			<ul class="menu2">
+    				<li class="menu3">预订说明</li>
+    				<li class="menu3">建议及投诉</li>
+    			</ul>
+    		</li>
+    	</ul>
+    	
+    </div>
+    <div id="page">
+    	<iframe src="html/book.html" class="page1" id="frame" frameborder="0"></iframe>
+    </div>
+
+<script type="text/javascript">
+    function page(n){
+		switch(n){
+			case 1:
+				document.getElementById("frame").src = "/html/book.html";
+				break;
+			case 2:	
+				document.getElementById("frame").src = "/html/mymeeting1.html";
+				break;
+			case 3:	
+				document.getElementById("frame").src = "/html/mymeeting2.html";
+				break;
+			case 4:	
+				document.getElementById("frame").src = "/html/mymeeting3.html";
+				break;
+			case 5:
+				document.getElementById("frame").src = "/html/myinfo.html";
+				break;
+		}
+	}
+	
+	
+</script>
+    
+</body>
+</html>

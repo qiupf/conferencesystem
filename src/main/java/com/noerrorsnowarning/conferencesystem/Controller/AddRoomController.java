@@ -4,6 +4,7 @@ import com.noerrorsnowarning.conferencesystem.Service.EquipmentService;
 import com.noerrorsnowarning.conferencesystem.Service.RoomService;
 import com.noerrorsnowarning.conferencesystem.domain.Equipment;
 import com.noerrorsnowarning.conferencesystem.domain.Room;
+import com.noerrorsnowarning.conferencesystem.interceptor.Access;
 import com.noerrorsnowarning.conferencesystem.tools.RoomGetParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,7 @@ public class AddRoomController {
     }
 
     @RequestMapping(value = "/addRoom", method = RequestMethod.POST)
+    @Access(auths = {"admin"})
     public String addRoom(HttpServletRequest request, Model model) throws ParseException {
 
         //大量的获取前端信息，放到Controller端不太好看，写到别的地方了

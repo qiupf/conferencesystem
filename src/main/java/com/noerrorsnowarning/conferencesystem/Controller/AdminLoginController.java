@@ -1,6 +1,7 @@
 package com.noerrorsnowarning.conferencesystem.Controller;
 
 import com.noerrorsnowarning.conferencesystem.Service.MasterService;
+import com.noerrorsnowarning.conferencesystem.interceptor.Access;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,6 +59,7 @@ public class AdminLoginController {
     }
 
     @RequestMapping(value = "/index.html", method = RequestMethod.GET)
+    @Access(auths = {"admin"})
     public String index() {
         return "/admin/index.html";
     }

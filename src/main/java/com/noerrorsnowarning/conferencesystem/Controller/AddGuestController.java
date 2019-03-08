@@ -1,6 +1,7 @@
 package com.noerrorsnowarning.conferencesystem.Controller;
 
 import com.noerrorsnowarning.conferencesystem.Service.GuestService;
+import com.noerrorsnowarning.conferencesystem.interceptor.Access;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ public class AddGuestController {
     }
 
     @RequestMapping(value = "/addGuest", method = RequestMethod.POST)
+    @Access(auths = {"admin"})
     public String addGuest(HttpServletRequest request, Model model) {
 
 

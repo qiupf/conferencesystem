@@ -1,5 +1,6 @@
 package com.noerrorsnowarning.conferencesystem.config;
 
+import com.noerrorsnowarning.conferencesystem.interceptor.AuthenticationInterceptor;
 import com.noerrorsnowarning.conferencesystem.interceptor.MyInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
@@ -10,13 +11,14 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        InterceptorRegistration addInterceptor = registry.addInterceptor(new MyInterceptor());
+        registry.addInterceptor(new AuthenticationInterceptor())
+                .addPathPatterns("/**");
 
-        //添加规则
-        addInterceptor.excludePathPatterns("/login/");
-        addInterceptor.excludePathPatterns("/static/**");
-        addInterceptor.excludePathPatterns("/admin/login/");
-        addInterceptor.addPathPatterns("/**");
+        registry.addInterceptor(new MyInterceptor())
+                .excludePathPatterns("/login/")
+                .excludePathPatterns("/static/**")
+                .excludePathPatterns("/admin/login/")
+                .addPathPatterns("/**");
     }
 
     @Override

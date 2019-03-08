@@ -25,10 +25,10 @@ public class RoomServiceImpl implements RoomService {
         int n=0;
         for(int i=0;i<numEquip;++i){
             if(equip[n].charAt(0)-'1'==i){
-                s+=1;
+                s+="1";
                 n++;
             }else {
-                s+=0;
+                s+="0";
             }
         }
 

@@ -21,7 +21,6 @@ public class RoomAndEquipServiceImpl implements RoomAndEquipService {
                 s="无";
             }else {
                 for (int j = 0; j < equip.length(); ++j) {
-//                    char temp=equip.charAt(j);
                     if(equip.charAt(j)!='0'){
                         s+=equipmentList.get(j).getEname()+" ";
                     }

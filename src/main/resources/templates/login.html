@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <title>登录</title>
 </head>
-<body>
+<script type="text/javascript">
+    function checkParent(){
+
+        if(window.parent.length>0){
+            window.parent.location="login.html";
+        }
+    }
+</script>
+
+<body onload="checkParent();">
 <form th:action="@{/login/}" method="post">
     <div>
         &nbsp;

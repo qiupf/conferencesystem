@@ -11,13 +11,13 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        registry.addInterceptor(new AuthenticationInterceptor())
-                .addPathPatterns("/**");
-
         registry.addInterceptor(new MyInterceptor())
                 .excludePathPatterns("/login/")
                 .excludePathPatterns("/static/**")
                 .excludePathPatterns("/admin/login/")
+                .addPathPatterns("/**");
+
+        registry.addInterceptor(new AuthenticationInterceptor())
                 .addPathPatterns("/**");
     }
 

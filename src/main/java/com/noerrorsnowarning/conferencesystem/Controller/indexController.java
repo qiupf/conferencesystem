@@ -74,7 +74,7 @@ public class indexController {
 
     @RequestMapping(value = "/html/state.html", method = RequestMethod.GET)
     public String state() {
-        return "/html/state.html";
+        return "html/state.html";
     }
 
     @RequestMapping(value = "/html/addmeetingroom.html", method = RequestMethod.GET)
@@ -83,22 +83,22 @@ public class indexController {
         List<Equipment>equipList=equipmentService.getEquips();
         model.addAttribute("equipList",equipList);
 
-        return "/html/addmeetingroom.html";
+        return "html/addmeetingroom.html";
     }
 
     @RequestMapping(value = "/html/addguest.html", method = RequestMethod.GET)
     public String addGuest() {
-        return "/html/addguest.html";
+        return "html/addguest.html";
     }
 
     @RequestMapping(value = "/html/setting.html", method = RequestMethod.GET)
     public String setting() {
-        return "/html/setting.html";
+        return "html/setting.html";
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String login() {
-        return "/admin/login";
+        return "admin/login";
     }
 
 }

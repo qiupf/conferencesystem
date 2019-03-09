@@ -39,7 +39,7 @@ public class AddGuestController {
             model.addAttribute("message", "插入失败");
         }
 
-        return "/html/addGuest";
+        return "html/addguest.html";
     }
 
 }

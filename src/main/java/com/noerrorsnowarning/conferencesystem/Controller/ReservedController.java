@@ -34,7 +34,7 @@ public class ReservedController {
 
         model.addAttribute("meetingList", meetingList);
 
-        return "/html/mymeeting1";
+        return "html/mymeeting1";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
@@ -42,6 +42,7 @@ public class ReservedController {
 
         //String numGuest=request.getParameter("numGust");
 
+        System.out.println(request.getParameter("Cname"));
         int result=reservedService.updateReserved(request);
 
         String url=mymeetingHtml(model,request);

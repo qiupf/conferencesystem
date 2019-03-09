@@ -24,12 +24,12 @@ public class AdminLoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return "/admin/login";
+        return "admin/login";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String loginindex() {
-        return "/admin/login";
+        return "admin/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public class AdminLoginController {
 
         if (!login) {
             model.addAttribute("error", "用户名密码错误");
-            result = "/admin/login";
+            result = "admin/login";
         } else {
 
             //创建session
@@ -61,7 +61,7 @@ public class AdminLoginController {
     @RequestMapping(value = "/index.html", method = RequestMethod.GET)
     @Access(auths = {"admin"})
     public String index() {
-        return "/admin/index.html";
+        return "admin/index.html";
     }
 
 }

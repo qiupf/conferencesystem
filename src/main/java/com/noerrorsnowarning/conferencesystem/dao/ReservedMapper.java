@@ -29,7 +29,7 @@ public interface ReservedMapper {
     @Update("update Conference " +
             "set " +
             "Cname = #{name}, " +
-            "RSID = #{RSID}, " +
+            "MSID = #{MSID}, " +
             "Cstarttime = #{startTime}, " +
             "CendTime = #{endTime}, " +
             "Signtime = #{signTime} " +
@@ -37,7 +37,7 @@ public interface ReservedMapper {
             "ConferenID = #{conferenceID}")
     int update(@Param("conferenceID")String conferenceID,
                @Param("name")String name,
-               @Param("RSID")String RSID,
+               @Param("MSID")String MSID,
                @Param("startTime")String startTime,
                @Param("endTime")String endTime,
                @Param("signTime")String signTime);

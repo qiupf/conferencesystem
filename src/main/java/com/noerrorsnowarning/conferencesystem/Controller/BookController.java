@@ -48,7 +48,7 @@ public class BookController {
 
         model.addAttribute("roomList", roomList);
 
-        return "/html/book";
+        return "html/book";
     }
 
     @RequestMapping(value = "/getRoom", method = RequestMethod.POST)
@@ -74,7 +74,7 @@ public class BookController {
         model.addAttribute("equipList",equipmentList);
         model.addAttribute("roomList",roomList);
 
-        return "/html/book";
+        return "html/book";
     }
 
     @RequestMapping(value = "/search",method = RequestMethod.POST)
@@ -94,7 +94,7 @@ public class BookController {
         model.addAttribute("equipList",equipmentList);
         model.addAttribute("roomList",roomList);
 
-        return "/html/book";
+        return "html/book";
     }
 
 }

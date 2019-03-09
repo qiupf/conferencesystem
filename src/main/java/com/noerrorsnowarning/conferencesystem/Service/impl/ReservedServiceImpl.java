@@ -62,7 +62,7 @@ public class ReservedServiceImpl implements ReservedService {
 
         String conferenceID = request.getParameter("conferenceID");
         String name = request.getParameter("Cname");
-        String RSID = request.getParameter("RSID");
+        String MSID = request.getParameter("MSID");
         String startTime = request.getParameter("Cstarttime");
         String endTime = request.getParameter("Cendtime");
         String signTime = request.getParameter("Signtime");
@@ -72,7 +72,7 @@ public class ReservedServiceImpl implements ReservedService {
         endTime = start + " " + endTime;
         signTime = start + " " + signTime;
 
-        int result = reservedMapper.update(conferenceID, name, RSID, startTime, endTime, signTime);
+        int result = reservedMapper.update(conferenceID, name, MSID, startTime, endTime, signTime);
 
         return result;
     }

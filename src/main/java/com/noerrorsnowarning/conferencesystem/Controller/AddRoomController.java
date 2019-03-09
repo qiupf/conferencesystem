@@ -17,7 +17,7 @@ import java.text.ParseException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/html/")
+@RequestMapping("/html")
 public class AddRoomController {
 
     private RoomService roomService;
@@ -51,7 +51,7 @@ public class AddRoomController {
 
         model.addAttribute("equipList",equipmentList);
 
-        return "/html/addmeetingroom.html";
+        return "html/addmeetingroom.html";
     }
 
 }

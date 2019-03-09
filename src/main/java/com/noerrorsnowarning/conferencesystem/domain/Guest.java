@@ -6,8 +6,7 @@ public class Guest {
     private String Gname;
     private String Gidentity;
 
-    public Guest(int GID, String Gname, String Gidentity){
-        this.GID=GID;
+    public Guest( String Gname, String Gidentity){
         this.Gname = Gname;
         this.Gidentity = Gidentity;
     }

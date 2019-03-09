@@ -23,12 +23,12 @@ public class RoomServiceImpl implements RoomService {
 
         String s="";
         int n=0;
-        for(int i=0;i<numEquip;++i){
-            if(equip[n].charAt(0)-'1'==i){
-                s+="1";
+        for(int i=0;i<numEquip;++i) {
+            if (n < equip.length && equip[n].charAt(0) - '1' == i) {
+                s += "1";
                 n++;
-            }else {
-                s+="0";
+            } else {
+                s += "0";
             }
         }
 

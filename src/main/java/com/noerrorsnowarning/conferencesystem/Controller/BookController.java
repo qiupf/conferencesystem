@@ -56,7 +56,7 @@ public class BookController {
 
         String roomID=request.getParameter("RoomID");
         String user= (String) request.getSession().getAttribute("Sname");
-        int result=reservedService.insertReserved("3",roomID,user);
+        int result=reservedService.insertReserved(roomID,user);
 
         return "redirect:/html/mymeeting1.html";
     }

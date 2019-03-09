@@ -2,6 +2,7 @@ package com.noerrorsnowarning.conferencesystem.Service.impl;
 
 import com.noerrorsnowarning.conferencesystem.Service.ReservedService;
 import com.noerrorsnowarning.conferencesystem.dao.ReservedMapper;
+import com.noerrorsnowarning.conferencesystem.domain.ConferenceInfo;
 import com.noerrorsnowarning.conferencesystem.domain.Reserved;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class ReservedServiceImpl implements ReservedService {
     }
 
     @Override
-    public int insertReserved(String conferenID, String roomId, String user) {
+    public int insertReserved(String roomId, String user) {
 
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
@@ -49,7 +50,9 @@ public class ReservedServiceImpl implements ReservedService {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = formatter.format(date);
 
-        int result = reservedMapper.insertReserved(conferenID, roomId, user, dateString);
+        Reserved reserved=new Reserved(roomId,user,dateString);
+
+        int result = reservedMapper.insertReserved(reserved);
 
         return result;
     }

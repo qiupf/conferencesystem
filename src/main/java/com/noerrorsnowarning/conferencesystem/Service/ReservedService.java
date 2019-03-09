@@ -9,7 +9,7 @@ public interface ReservedService {
 
     List<Reserved>getReserved(String id);
 
-    int insertReserved(String conferenID,String roomId,String user);
+    int insertReserved(String roomId,String user);
 
     int updateReserved(HttpServletRequest request);
 

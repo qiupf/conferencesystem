@@ -31,7 +31,7 @@ public class AddGuestController {
         String identity = request.getParameter("identity");
 
         //返回添加是否成功
-        int result = guestService.addGuest(10, name, identity);
+        int result = guestService.addGuest(name, identity);
 
         if (result == 1) {
             model.addAttribute("message", "插入成功");

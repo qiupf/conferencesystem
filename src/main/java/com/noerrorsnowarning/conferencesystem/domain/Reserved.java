@@ -20,7 +20,13 @@ public class Reserved {
     private int numGuest;
     private Time Signtime;
     private String sign;
+    private String dateString;
 
+    public Reserved(String roomID,String RSID,String dateString){
+        this.RoomID=roomID;
+        this.RSID=RSID;
+        this.dateString=dateString;
+    }
 
     public String getRoomID() {
         return RoomID;
@@ -140,5 +146,13 @@ public class Reserved {
 
     public void setSign(String sign) {
         this.sign = sign;
+    }
+
+    public String getDateString() {
+        return dateString;
+    }
+
+    public void setDateString(String dateString) {
+        this.dateString = dateString;
     }
 }

@@ -17,9 +17,9 @@ public class GuestServiceImpl implements GuestService {
     }
 
     @Override
-    public int addGuest(int id, String name, String identity) {
+    public int addGuest(String name, String identity) {
 
-        Guest guest = new Guest(id, name, identity);
+        Guest guest = new Guest(name, identity);
 
         return guestMapper.addGuest(guest);
     }

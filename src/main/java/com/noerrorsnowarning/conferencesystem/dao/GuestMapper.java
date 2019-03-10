@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Mapper
 public interface GuestMapper {
 
+    //@Options可以根据主键自增，自动设置id
     //插入外宾信息
     @Insert("insert into Guest(Gname,Gidentity) values (#{Gname},#{Gidentity})")
     @Options(useGeneratedKeys = true,keyProperty = "GID",keyColumn = "GID")

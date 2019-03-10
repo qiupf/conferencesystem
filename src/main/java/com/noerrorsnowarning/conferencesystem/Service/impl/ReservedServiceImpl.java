@@ -2,7 +2,6 @@ package com.noerrorsnowarning.conferencesystem.Service.impl;
 
 import com.noerrorsnowarning.conferencesystem.Service.ReservedService;
 import com.noerrorsnowarning.conferencesystem.dao.ReservedMapper;
-import com.noerrorsnowarning.conferencesystem.domain.ConferenceInfo;
 import com.noerrorsnowarning.conferencesystem.domain.Reserved;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,11 +26,13 @@ public class ReservedServiceImpl implements ReservedService {
     @Override
     public List<Reserved> getReserved(String id) {
 
+        //设置时间格式
         SimpleDateFormat nowtime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String now = nowtime.format(new Date());
 
-        if(id.equals("admin")){
-            id="%";
+        //判断是否是admin查询，admin查询查询所有
+        if (id.equals("admin")) {
+            id = "%";
         }
 
         List<Reserved> reservedList = reservedMapper.getReserved(id, now);
@@ -42,15 +43,18 @@ public class ReservedServiceImpl implements ReservedService {
     @Override
     public int insertReserved(String roomId, String user) {
 
+        //默认开会时间是当前时间+1天
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         calendar.add(calendar.DATE, 1);//把日期往前减少一天，若想把日期向后推一天则将负数改为正数
         date = calendar.getTime();
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = formatter.format(date);
 
-        Reserved reserved=new Reserved(roomId,user,dateString);
+        //新建domain对象
+        Reserved reserved = new Reserved(roomId, user, dateString);
 
         int result = reservedMapper.insertReserved(reserved);
 
@@ -68,12 +72,20 @@ public class ReservedServiceImpl implements ReservedService {
         String signTime = request.getParameter("Signtime");
         String start = request.getParameter("start");
 
-        startTime = start + " " + startTime;
-        endTime = start + " " + endTime;
-        signTime = start + " " + signTime;
+        //String对象是不可修改的，+运算会新建对象
+        StringBuilder temp = new StringBuilder(20);
+        temp.append(start);
+        temp.append(" ");
+        startTime = temp.append(startTime).toString();
+        temp.delete(11, 19);
+        endTime = temp.append(endTime).toString();
+        temp.delete(11, 19);
+        signTime = temp.append(signTime).toString();
+
 
         int result = reservedMapper.update(conferenceID, name, MSID, startTime, endTime, signTime);
 
         return result;
     }
+
 }

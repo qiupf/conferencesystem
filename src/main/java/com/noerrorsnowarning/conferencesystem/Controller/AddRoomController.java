@@ -3,9 +3,7 @@ package com.noerrorsnowarning.conferencesystem.Controller;
 import com.noerrorsnowarning.conferencesystem.Service.EquipmentService;
 import com.noerrorsnowarning.conferencesystem.Service.RoomService;
 import com.noerrorsnowarning.conferencesystem.domain.Equipment;
-import com.noerrorsnowarning.conferencesystem.domain.Room;
 import com.noerrorsnowarning.conferencesystem.interceptor.Access;
-import com.noerrorsnowarning.conferencesystem.tools.RoomGetParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,15 +31,11 @@ public class AddRoomController {
     @Access(auths = {"admin"})
     public String addRoom(HttpServletRequest request, Model model) throws ParseException {
 
-        //大量的获取前端信息，放到Controller端不太好看，写到别的地方了
-        RoomGetParameter roomGetParameter = new RoomGetParameter();
-        Room room = roomGetParameter.getParameter(request);
-
-        List<Equipment>equipmentList=equipmentService.getEquips();
-
+        //先获取所有设备列表
+        List<Equipment> equipmentList = equipmentService.getEquips();
         String[] equip = request.getParameterValues("equip");
 
-        int result = roomService.RoomInsert(room,equip,equipmentList.size());
+        int result = roomService.RoomInsert(request, equip, equipmentList.size());
 
         if (result == 1) {
             model.addAttribute("message", "插入成功");
@@ -49,7 +43,7 @@ public class AddRoomController {
             model.addAttribute("message", "插入失败");
         }
 
-        model.addAttribute("equipList",equipmentList);
+        model.addAttribute("equipList", equipmentList);
 
         return "html/addmeetingroom.html";
     }

@@ -21,10 +21,10 @@ public class AddGuestController {
         this.guestService = guestService;
     }
 
+    //@Access是拦截器权限设置
     @RequestMapping(value = "/addGuest", method = RequestMethod.POST)
     @Access(auths = {"admin"})
     public String addGuest(HttpServletRequest request, Model model) {
-
 
         //获取数据
         String name = request.getParameter("name");

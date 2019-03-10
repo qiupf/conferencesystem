@@ -16,17 +16,18 @@ public class RoomAndEquipServiceImpl implements RoomAndEquipService {
         //将设备转为String
         for(int i=0;i<rooms.size();++i){
             String equip=rooms.get(i).getEquip();
-            String s="";
+            StringBuilder s=new StringBuilder();
             if(equip==null){
-                s="无";
+                s.append("无");
             }else {
                 for (int j = 0; j < equip.length(); ++j) {
                     if(equip.charAt(j)!='0'){
-                        s+=equipmentList.get(j).getEname()+" ";
+                        s.append(equipmentList.get(j).getEname());
+                        s.append(" ");
                     }
                 }
             }
-            rooms.get(i).setEquips(s);
+            rooms.get(i).setEquips(s.toString());
         }
 
         return rooms;

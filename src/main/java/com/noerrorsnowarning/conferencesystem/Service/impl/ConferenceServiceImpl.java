@@ -24,7 +24,7 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
-    public List<ConferenceInfo> searchCon(int choose,String user) {
+    public List<ConferenceInfo> searchCon(int choose, String user) {
 
         //获取当前时间并转换格式
         SimpleDateFormat nowtime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -34,12 +34,12 @@ public class ConferenceServiceImpl implements ConferenceService {
 
         //根据选择查看历史和将有的会议记录
         if (choose == 2) {
-            conferenceList = conferenceMapper.funConBySID(time,user);
+            conferenceList = conferenceMapper.funConBySID(time, user);
         } else if (choose == 3) {
-            conferenceList = conferenceMapper.pastConBySID(time,user);
+            conferenceList = conferenceMapper.pastConBySID(time, user);
         } else {
-            conferenceList = conferenceMapper.funConBySID(time,user);
-            conferenceList.addAll(conferenceMapper.pastConBySID(time,user));
+            conferenceList = conferenceMapper.funConBySID(time, user);
+            conferenceList.addAll(conferenceMapper.pastConBySID(time, user));
         }
 
         for (int i = 0; i < conferenceList.size(); ++i) {

@@ -24,7 +24,9 @@ public class indexController {
     private EquipmentService equipmentService;
 
     @Autowired
-    indexController(ConferenceService conferenceService, StaffService staffService,EquipmentService equipmentService) {
+    indexController(ConferenceService conferenceService,
+                    StaffService staffService,
+                    EquipmentService equipmentService) {
         this.conferenceService = conferenceService;
         this.staffService = staffService;
         this.equipmentService = equipmentService;
@@ -41,23 +43,23 @@ public class indexController {
     }
 
     @RequestMapping(value = "/html/mymeeting2.html", method = RequestMethod.GET)
-    public String mymeeting2(Model model,HttpServletRequest request) {
+    public String mymeeting2(Model model, HttpServletRequest request) {
 
-        String user= (String) request.getSession().getAttribute("Sname");
+        String user = (String) request.getSession().getAttribute("Sname");
 
         //获取未参加的会议
-        List<ConferenceInfo> conferenceList = conferenceService.searchCon(2,user);
+        List<ConferenceInfo> conferenceList = conferenceService.searchCon(2, user);
         model.addAttribute("ConferenceList", conferenceList);
         return "html/mymeeting2";
     }
 
     @RequestMapping(value = "/html/mymeeting3.html", method = RequestMethod.GET)
-    public String mymeeting3(Model model,HttpServletRequest request) {
+    public String mymeeting3(Model model, HttpServletRequest request) {
 
-        String user= (String) request.getSession().getAttribute("Sname");
+        String user = (String) request.getSession().getAttribute("Sname");
 
         //获取历史会议
-        List<ConferenceInfo> conferenceList = conferenceService.searchCon(3,user);
+        List<ConferenceInfo> conferenceList = conferenceService.searchCon(3, user);
         model.addAttribute("ConferenceList", conferenceList);
         return "html/mymeeting3";
     }
@@ -80,8 +82,9 @@ public class indexController {
     @RequestMapping(value = "/html/addmeetingroom.html", method = RequestMethod.GET)
     public String addMeetingRoom(Model model) {
 
-        List<Equipment>equipList=equipmentService.getEquips();
-        model.addAttribute("equipList",equipList);
+        //获取设备信息显示到前端
+        List<Equipment> equipList = equipmentService.getEquips();
+        model.addAttribute("equipList", equipList);
 
         return "html/addmeetingroom.html";
     }

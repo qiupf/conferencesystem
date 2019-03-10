@@ -29,7 +29,7 @@ public interface ReservedMapper {
     @Update("update Conference " +
             "set " +
             "Cname = #{name}, " +
-            "MSID = #{MSID}, " +
+//            "MSID = #{MSID}, " +      //主会人因为外键，所以不能为空更新
             "Cstarttime = #{startTime}, " +
             "CendTime = #{endTime}, " +
             "Signtime = #{signTime} " +

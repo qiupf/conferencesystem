@@ -14,15 +14,16 @@ public class EquipmentServiceImpl implements EquipmentService {
     private EquipmentMapper equipmentMapper;
 
     @Autowired
-    public EquipmentServiceImpl(EquipmentMapper equipmentMapper){
-        this.equipmentMapper=equipmentMapper;
+    public EquipmentServiceImpl(EquipmentMapper equipmentMapper) {
+        this.equipmentMapper = equipmentMapper;
     }
 
     @Override
     public List<Equipment> getEquips() {
 
-        List<Equipment>equipmentList=equipmentMapper.getEquips();
+        List<Equipment> equipmentList = equipmentMapper.getEquips();
 
         return equipmentList;
     }
+
 }

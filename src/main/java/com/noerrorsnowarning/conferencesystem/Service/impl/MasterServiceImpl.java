@@ -26,4 +26,5 @@ public class MasterServiceImpl implements MasterService {
         }
         return result;
     }
+
 }

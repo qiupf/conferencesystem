@@ -23,4 +23,5 @@ public class GuestServiceImpl implements GuestService {
 
         return guestMapper.addGuest(guest);
     }
+
 }

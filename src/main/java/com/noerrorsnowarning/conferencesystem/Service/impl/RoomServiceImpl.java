@@ -6,6 +6,10 @@ import com.noerrorsnowarning.conferencesystem.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service
@@ -19,20 +23,24 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public int RoomInsert(Room room,String[] equip,int numEquip) {
+    public int RoomInsert(HttpServletRequest request, String[] equip, int numEquip) throws ParseException {
 
-        String s="";
+        //写了一个转换函数，不然getParameter太多很丑
+        Room room = getParameter(request);
+
+        //插入设备值
+        StringBuilder s=new StringBuilder();
         int n=0;
         for(int i=0;i<numEquip;++i) {
             if (n < equip.length && equip[n].charAt(0) - '1' == i) {
-                s += "1";
+                s.append("1");
                 n++;
             } else {
-                s += "0";
+                s.append("0");
             }
         }
 
-        room.setEquip(s);
+        room.setEquip(s.toString());
 
         return roomMapper.add(room);
     }
@@ -67,29 +75,65 @@ public class RoomServiceImpl implements RoomService {
         startTime=startTime+":00";
         endTime=endTime+":00";
 
-        String s="";
+        StringBuilder s=new StringBuilder();
 
         //通过正则表达式来判断设备
         if(equip==null||equip.length==0){
-            s=".";
+            s.append(".");
         }else {
             int n=0;
             for(int i=0;i<numEquip;++i) {
                 if(n<equip.length) {
                     if (i == equip[n].charAt(0) - '1') {
-                        s += "[^0]";
+                        s.append("[^0]");
                         n++;
                     } else {
-                        s += ".";
+                        s.append(".");
                     }
                 }else {
-                    s+=".";
+                    s.append(".");
                 }
             }
         }
 
-        List<Room>roomList=roomMapper.findRoomByOhter(startTime,endTime,num,s);
+        List<Room>roomList=roomMapper.findRoomByOhter(startTime,endTime,num,s.toString());
         return roomList;
+    }
+
+    private Room getParameter(HttpServletRequest request) throws ParseException {
+
+        String id = request.getParameter("meetingroom_ID");
+        String capacity = request.getParameter("volume");
+        String address = request.getParameter("address");
+        String jurisdiction = request.getParameter("grade");
+        String start = request.getParameter("available_time_start");
+        String end = request.getParameter("available_time_end");
+
+        //数据库内类型为int，要将String装为int
+        if (jurisdiction == null) {
+            jurisdiction = "1";
+        }
+        int intCapacity = Integer.valueOf(capacity);
+        int intJurisdiction = Integer.valueOf(jurisdiction);
+
+        //数据库内类型为Time，要将String转为Time
+        Time startTime = null;
+        Time endTime = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+
+        if (start != null && !start.equals("")) {
+            java.util.Date date = simpleDateFormat.parse(start);
+            startTime = new Time(date.getTime());
+        }
+        if (end != null && !start.equals("")) {
+            java.util.Date date = simpleDateFormat.parse(end);
+            endTime = new Time(date.getTime());
+        }
+
+        //插入新会议室
+        Room room = new Room(id, address, intCapacity, intJurisdiction, startTime, endTime);
+
+        return room;
     }
 
 }

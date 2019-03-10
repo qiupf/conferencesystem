@@ -11,6 +11,9 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
+        //addPathPatterns是拦截的
+        //excludePathPatterns是不拦截的
+
         registry.addInterceptor(new MyInterceptor())
                 .excludePathPatterns("/login/")
                 .excludePathPatterns("/static/**")
@@ -25,6 +28,5 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
-
 
 }

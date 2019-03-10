@@ -1,9 +1,7 @@
 package com.noerrorsnowarning.conferencesystem.Controller;
 
 import com.noerrorsnowarning.conferencesystem.Service.ReservedService;
-import com.noerrorsnowarning.conferencesystem.Service.RoomService;
 import com.noerrorsnowarning.conferencesystem.domain.Reserved;
-import com.noerrorsnowarning.conferencesystem.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,12 +38,9 @@ public class ReservedController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(Model model, HttpServletRequest request) {
 
-        //String numGuest=request.getParameter("numGust");
+        int result = reservedService.updateReserved(request);
 
-        System.out.println(request.getParameter("Cname"));
-        int result=reservedService.updateReserved(request);
-
-        String url=mymeetingHtml(model,request);
+        String url = mymeetingHtml(model, request);
 
         return url;
     }

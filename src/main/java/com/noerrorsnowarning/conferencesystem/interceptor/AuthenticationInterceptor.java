@@ -15,14 +15,17 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         try {
-            HandlerMethod handlerMethod = (HandlerMethod) handler;
 
+            //获取权限列表
+            HandlerMethod handlerMethod = (HandlerMethod) handler;
             Method method = handlerMethod.getMethod();
             Access access = method.getAnnotation(Access.class);
+
             if (access == null) {
                 return true;
             }
 
+            //如果权限列表不为空，根据session查看是否有权限
             if (access.auths().length > 0) {
                 String[] auths = access.auths();
                 Set<String> authSet = new HashSet<>();
@@ -35,7 +38,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
                     return true;
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return true;
         }
 

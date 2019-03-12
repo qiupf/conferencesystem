@@ -46,7 +46,7 @@ public class ConferenceServiceImpl implements ConferenceService {
             ConferenceInfo info = conferenceList.get(i);
 
             //获取外宾数量
-            info.setNumGuest(guestConMapper.numByGuestCon(info.getConferenID()));
+            info.setNumGuest(guestConMapper.numByGuestCon(info.getConferenceID()));
 
             //根据是否有签到时间获取是否签到
             info.setSign(info.getSigntime() == null ? "否" : "是");

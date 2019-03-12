@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface ReservedMapper {
 
-    @Select("select r.RoomID,c.ConferenID, r.Raddress, r.Rcapacity, " +
+    @Select("select r.RoomID,c.ConferenceID, r.Raddress, r.Rcapacity, " +
             "c.Cstarttime, c.Cstarttime as starttime, c.Cendtime, " +
             "c.RSID, c.Cname, c.MSID, c.Cnum, c.Signtime " +
             "from Room r,Conference c " +
@@ -23,7 +23,7 @@ public interface ReservedMapper {
             "Conference(RoomID, RSID, Cstarttime) " +
             "values " +
             "(#{RoomID},#{RSID},#{dateString})")
-    @Options(useGeneratedKeys = true,keyProperty = "ConferenID",keyColumn = "ConferenID")
+    @Options(useGeneratedKeys = true,keyProperty = "ConferenceID",keyColumn = "ConferenceID")
     int insertReserved(Reserved reserved);
 
     @Update("update Conference " +
@@ -34,7 +34,7 @@ public interface ReservedMapper {
             "CendTime = #{endTime}, " +
             "Signtime = #{signTime} " +
             "where " +
-            "ConferenID = #{conferenceID}")
+            "ConferenceID = #{conferenceID}")
     int update(@Param("conferenceID")String conferenceID,
                @Param("name")String name,
                @Param("MSID")String MSID,

@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class ConferenceInfo {
 
-    private int ConferenID;
+    private int ConferenceID;
     private String Raddress;
     private Date Cstarttime;
     private Time starttime;
@@ -18,13 +18,6 @@ public class ConferenceInfo {
     private int numGuest;
     private String sign;
 
-    public int getConferenID() {
-        return ConferenID;
-    }
-
-    public void setConferenID(int conferenID) {
-        ConferenID = conferenID;
-    }
 
     public String getCname() {
         return Cname;
@@ -112,5 +105,13 @@ public class ConferenceInfo {
 
     public void setSign(String sign) {
         this.sign = sign;
+    }
+
+    public int getConferenceID() {
+        return ConferenceID;
+    }
+
+    public void setConferenceID(int conferenceID) {
+        ConferenceID = conferenceID;
     }
 }

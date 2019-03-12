@@ -6,7 +6,7 @@ import java.sql.Time;
 public class Reserved {
 
     private String RoomID;
-    private int ConferenID;
+    private int ConferenceID;
     private String Raddress;
     private int Rcapacity;
     private Date Cstarttime;
@@ -34,14 +34,6 @@ public class Reserved {
 
     public void setRoomID(String roomID) {
         RoomID = roomID;
-    }
-
-    public int getConferenID() {
-        return ConferenID;
-    }
-
-    public void setConferenID(int conferenID) {
-        ConferenID = conferenID;
     }
 
     public String getRaddress() {
@@ -154,5 +146,13 @@ public class Reserved {
 
     public void setDateString(String dateString) {
         this.dateString = dateString;
+    }
+
+    public int getConferenceID() {
+        return ConferenceID;
+    }
+
+    public void setConferenceID(int conferenceID) {
+        ConferenceID = conferenceID;
     }
 }

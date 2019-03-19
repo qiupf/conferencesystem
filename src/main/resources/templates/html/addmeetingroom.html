@@ -9,12 +9,11 @@
 <div style="text-align: left">
 	<span style="font-size: 12px;color: red" th:text="${message}"/>
 	<form th:action="@{/html/addRoom/}" method="post">
-		编号：<input name="meetingroom_ID" type="text" /><br />    <!-----编号默认显示还未编的---->
+		编号：<label name="meetingroom_ID"/><br />    <!-----编号默认显示还未编的---->
 		容纳量：<input name="volume" type="number" /><br />
 		地址：<input name="address" type="text" /><br />
 		等级：<input id="1" name="grade" type="radio" value="1" />1<input id="2" name="grade" type="radio" value="2" />2<br />
 		可使用时段：<input name="available_time_start" type="time" />-<input name="available_time_end" type="time" /><br />
-		目前状态：<input id="空闲" name="state" type="radio" value="空闲" />空闲<input id="使用中" name="state" type="radio" value="使用中" />使用中<br/> <!--我觉得状态没有必要-->
 		设备：
 		<table>
 			<td th:each="equip : ${equipList}">

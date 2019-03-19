@@ -40,26 +40,26 @@ public class ReservedServiceImpl implements ReservedService {
         return reservedList;
     }
 
-    @Override
-    public int insertReserved(String roomId, String user) {
-
-        //默认开会时间是当前时间+1天
-        Date date = new Date();
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        calendar.add(calendar.DATE, 1);//把日期往前减少一天，若想把日期向后推一天则将负数改为正数
-        date = calendar.getTime();
-
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateString = formatter.format(date);
-
-        //新建domain对象
-        Reserved reserved = new Reserved(roomId, user, dateString);
-
-        int result = reservedMapper.insertReserved(reserved);
-
-        return result;
-    }
+//    @Override
+//    public int insertReserved(String roomId, String user) {
+//
+//        //默认开会时间是当前时间+1天
+//        Date date = new Date();
+//        Calendar calendar = new GregorianCalendar();
+//        calendar.setTime(date);
+//        calendar.add(calendar.DATE, 1);//把日期往前减少一天，若想把日期向后推一天则将负数改为正数
+//        date = calendar.getTime();
+//
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String dateString = formatter.format(date);
+//
+//        //新建domain对象
+//        Reserved reserved = new Reserved(roomId, user, dateString);
+//
+//        int result = reservedMapper.insertReserved(reserved);
+//
+//        return result;
+//    }
 
     @Override
     public int updateReserved(HttpServletRequest request) {

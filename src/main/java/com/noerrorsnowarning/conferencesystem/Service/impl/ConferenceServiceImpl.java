@@ -3,6 +3,7 @@ package com.noerrorsnowarning.conferencesystem.Service.impl;
 import com.noerrorsnowarning.conferencesystem.Service.ConferenceService;
 import com.noerrorsnowarning.conferencesystem.dao.ConferenceMapper;
 import com.noerrorsnowarning.conferencesystem.dao.GuestConMapper;
+import com.noerrorsnowarning.conferencesystem.dao.RoomMapper;
 import com.noerrorsnowarning.conferencesystem.domain.ConferenceInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,13 @@ public class ConferenceServiceImpl implements ConferenceService {
 
     private ConferenceMapper conferenceMapper;
     private GuestConMapper guestConMapper;
+    private RoomMapper roomMapper;
 
     @Autowired
-    public ConferenceServiceImpl(ConferenceMapper conferenceMapper, GuestConMapper guestConMapper) {
+    public ConferenceServiceImpl(ConferenceMapper conferenceMapper, GuestConMapper guestConMapper, RoomMapper roomMapper) {
         this.conferenceMapper = conferenceMapper;
         this.guestConMapper = guestConMapper;
+        this.roomMapper = roomMapper;
     }
 
     @Override
@@ -53,6 +56,14 @@ public class ConferenceServiceImpl implements ConferenceService {
         }
 
         return conferenceList;
+    }
+
+    @Override
+    public ConferenceInfo getCon(String roomID,String user) {
+        String address=roomMapper.findRaddressByRoomID(roomID);
+        String MSID=user;
+        ConferenceInfo conferenceInfo=new ConferenceInfo(address,MSID);
+        return conferenceInfo;
     }
 
 }

@@ -11,6 +11,7 @@ public class ConferenceInfo {
     private Time starttime;
     private Time Cendtime;
     private String RSID;
+    private String MSID;
     private String Cname;
     private int Cnum;
     private Time Signtime;
@@ -18,6 +19,10 @@ public class ConferenceInfo {
     private int numGuest;
     private String sign;
 
+    public ConferenceInfo(String Raddress, String MSID){
+        this.Raddress=Raddress;
+        this.MSID=MSID;
+    }
 
     public String getCname() {
         return Cname;
@@ -113,5 +118,13 @@ public class ConferenceInfo {
 
     public void setConferenceID(int conferenceID) {
         ConferenceID = conferenceID;
+    }
+
+    public String getMSID() {
+        return MSID;
+    }
+
+    public void setMSID(String MSID) {
+        this.MSID = MSID;
     }
 }

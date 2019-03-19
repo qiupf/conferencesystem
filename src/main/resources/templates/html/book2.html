@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
@@ -9,7 +9,7 @@
 //*为必填项<br><br>
 
 	会议室编号:001（不可更改）<br>
-	会议室地址:广B101（不可更改）<br>
+	会议室地址:<p th:text="${conInfo.Raddress}"/> （不可更改）<br>
 	*会议日期:<input type="date">（如果使用 精确查找 预定，该项为空，如果使用 查找 预定，该项为查找时的日期，可更改）<br>
 	*会议室占用时间：<input type="time"> <input type="time">（同上）<br>
 	*会议名称：<input type="text"><br>

@@ -41,4 +41,7 @@ public interface RoomMapper {
                               @Param("num")String num,
                               @Param("equip")String s);
 
+    @Select("select Raddress from Room where RoomID = #{RoomID}")
+    String findRaddressByRoomID(@Param("RoomID")String RoomID);
+
 }

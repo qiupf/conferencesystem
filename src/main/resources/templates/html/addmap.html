@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addmap</title>
+</head>
+<script>
+    function f() {
+        var box=document.getElementById(box);
+        for(var i=0;i<10;i++)
+        {
+            for(var j=0;j<10;j++)
+            {
+                var smallbox=document.createElement("label");
+                smallbox.setAttribute("id","box"+i.toString()+j.toString());
+                smallbox.innerHTML="sfefs";
+                box.appendChild(smallbox);
+            }
+        }
+    }
+
+</script>
+<body onload="f()">
+    <input type="checkbox" name="color" value="会议室">会议室</input>
+    <input type="checkbox" name="color" value="办公区域">办公区域</input>
+    <select>
+        <option>美工部</option>
+        <option>编辑部</option>
+    </select>
+    <input type="checkbox" name="color" value="墙体">墙体</input>
+<div id="box" style="width: 400px;height: 400px;background:red">
+<p>sfe</p>
+</div>
+</body>
+</html>

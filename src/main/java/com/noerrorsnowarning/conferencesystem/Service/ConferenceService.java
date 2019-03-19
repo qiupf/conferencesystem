@@ -8,4 +8,5 @@ public interface ConferenceService {
 
     List<ConferenceInfo> searchCon(int choose,String user);
 
+    ConferenceInfo getCon(String roomID,String user);
 }

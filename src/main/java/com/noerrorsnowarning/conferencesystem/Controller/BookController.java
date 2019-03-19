@@ -1,9 +1,7 @@
 package com.noerrorsnowarning.conferencesystem.Controller;
 
-import com.noerrorsnowarning.conferencesystem.Service.EquipmentService;
-import com.noerrorsnowarning.conferencesystem.Service.ReservedService;
-import com.noerrorsnowarning.conferencesystem.Service.RoomAndEquipService;
-import com.noerrorsnowarning.conferencesystem.Service.RoomService;
+import com.noerrorsnowarning.conferencesystem.Service.*;
+import com.noerrorsnowarning.conferencesystem.domain.ConferenceInfo;
 import com.noerrorsnowarning.conferencesystem.domain.Equipment;
 import com.noerrorsnowarning.conferencesystem.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +20,17 @@ public class BookController {
     private RoomService roomService;
     private EquipmentService equipmentService;
     private RoomAndEquipService roomAndEquipService;
-    private ReservedService reservedService;
+    private ConferenceService conferenceService;
 
     @Autowired
     BookController(RoomService roomService,
                    EquipmentService equipmentService,
                    RoomAndEquipService roomAndEquipService,
-                   ReservedService reservedService) {
+                   ConferenceService conferenceService) {
         this.roomService = roomService;
         this.equipmentService = equipmentService;
         this.roomAndEquipService = roomAndEquipService;
-        this.reservedService = reservedService;
+        this.conferenceService = conferenceService;
     }
 
     @RequestMapping(value = "/html/book.html", method = RequestMethod.GET)
@@ -51,14 +49,16 @@ public class BookController {
         return "html/book";
     }
 
+
     @RequestMapping(value = "/getRoom", method = RequestMethod.POST)
-    public String getRoom(HttpServletRequest request) {
+    public String getRoom(HttpServletRequest request,Model model) {
 
         String roomID = request.getParameter("RoomID");
         String user = (String) request.getSession().getAttribute("Sname");
-        int result = reservedService.insertReserved(roomID, user);
-
-        return "redirect:/html/mymeeting1.html";
+//        int result = reservedService.insertReserved(roomID, user);
+        ConferenceInfo conferenceInfo=conferenceService.getCon(roomID,user);
+        model.addAttribute("conInfo",conferenceInfo);
+        return "html/book2";
     }
 
     @RequestMapping(value = "/searchRoom", method = RequestMethod.POST)
@@ -95,6 +95,17 @@ public class BookController {
         model.addAttribute("roomList", roomList);
 
         return "html/book";
+    }
+
+    @RequestMapping(value = "/goTo",method = RequestMethod.POST)
+    public String goTo(HttpServletRequest request){
+
+        String day=request.getParameter("day");
+        String hour=request.getParameter("hour");
+        String time=request.getParameter("time");
+        System.out.println(day+" "+hour+" "+time);
+
+        return "html/book2";
     }
 
 }

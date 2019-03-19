@@ -5,6 +5,12 @@ body{
 	font-family: 'Microsoft Yahei';
 }
 
+.vague{
+	width: 800px;
+	border: #000000,thin,solid;
+	padding-left: 50px;
+}
+
 .search{
 	width: 800px;
 	border:#9897FF,thin,solid;

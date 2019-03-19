@@ -31,6 +31,15 @@
     		<li class="menu1" onClick="page(6)">
     			设置
     		</li>
+			<li class="menu1" onClick="page(7)">
+				会议室
+			</li>
+			<li class="menu1" onClick="page(8)">
+				添加员工
+			</li>
+			<li class="menu1" onClick="page(9)">
+				添加地图
+			</li>
     	</ul>
     	
     </div>
@@ -45,7 +54,7 @@
 				document.getElementById("frame").src = "/html/state.html";
 				break;
 			case 2:	
-				document.getElementById("frame").src = "/html/book.html";
+				document.getElementById("frame").src = "/html/bookadmin.html";
 				break;
 			case 3:	
 				document.getElementById("frame").src = "/html/mymeeting1.html";
@@ -58,6 +67,15 @@
 				break;
 			case 6:
 				document.getElementById("frame").src = "/html/setting.html";
+				break;
+			case 7:
+				document.getElementById("frame").src = "/html/meetingroom.html";
+				break;
+			case 8:
+				document.getElementById("frame").src = "/html/addstaff.html";
+				break;
+			case 9:
+				document.getElementById("frame").src = "/html/addmap.html";
 				break;
 		}
 	}

@@ -7,39 +7,7 @@
 </head>
 
 <body>
-	<div class="vague">
-		<form th:action="@{/goTo}" method="post">
-			您将于
-			<select name="day">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-			</select>
-			天后，
-			<select name="hour">
-				<option>上午（8：00-13：00）</option>
-				<option>下午（13：00-18：00）</option>
-				<option>晚上（18：00-22：00）</option>
-			</select>
-			开会,会议时长为
-			<select name="time">
-				<option>0.5</option>
-				<option>1.0</option>
-				<option>1.5</option>
-				<option>2.0</option>
-				<option>2.5</option>
-				<option>3.0</option>
-				<option>3.5</option>
-				<option>4.0</option>
-			</select>
-			个小时。
-			<button id="vaguefind" type="submit">查找</button>
-		</form>
-	</div>
+
 	<div class="search">
 	<form th:action="@{/searchRoom}" method="post" id="searchform1">                <!----精确查找表单---->
 		会议室编号：

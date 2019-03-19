@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-<script src="/jquery_3.3.1_min.js" th:src="@{/jquery.min.js}"></script>
-<link rel="stylesheet" href="../../static/css/mymeeting1.css" />
+<!--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>-->
+<script src="/js/jquery_3.3.1_min.js" th:src="@{/jquery.min.js}"></script>
+<link rel="stylesheet" href="/css/mymeeting1.css" />
 </head>
 
 <body>
@@ -32,8 +32,8 @@
 		</tr>
 		<tr id="001" th:each="meeting : ${meetingList}">
 			<td id="001_1" th:text="${meeting.RoomID}" />
-			<td id="001_2" th:text="${meeting.ConferenID}"/>
-			<input hidden th:value="${meeting.ConferenID}" id="001_28"/>
+			<td id="001_2" th:text="${meeting.ConferenceID}"/>
+			<input hidden th:value="${meeting.ConferenceID}" id="001_28"/>
 			<td id="001_3" th:text="${meeting.Raddress}"/>
 			<td id="001_4" th:text="${meeting.Rcapacity}"/>
 			<td id="001_5" th:text="${meeting.Cstarttime}"/>
@@ -59,105 +59,6 @@
 	//参会人数不可编辑，添加参会人和外宾人数时更新参会人数。
 	//会议编号：如果申请成功，由系统分配
 	
-<script>
-	function reset(id){
-		if(document.getElementById(id.toString()+"_19").innerHTML=="编辑")
-			{
-				document.getElementById(id.toString()+"_19").innerHTML="确认";
-			}
-		else
-			{
-				document.getElementById(id.toString()+"_19").innerHTML="编辑";
-				$("#001_19").click(function () {
-					$.ajax({
-						type : "POST",
-						url : "/edit",
-						data : {
-							"start" : $("#001_27").val(),
-							"conferenceID" : $("#001_28").val(),
-							"Cname" : $("#001_29").val(),
-							"MSID" : $("#001_30").val(),
-							"Cstarttime" : $("#001_31").val(),
-							"Cendtime" : $("#001_32").val(),
-							"numGust" : $("#001_35").val(),
-							"Signtime" : $("#001_37").val()
-						},
-						dataType : "json",
-						success : function(data) {
-						}
-					});
-				});
-				document.getElementById(id.toString()+"form").submit();
-			}
-		for(var i=9;i<18;i++)
-		{
-			if(i!=14&&i!=13)
-			{
-				var n = document.getElementById(id.toString()+"_"+ i.toString());
-				if (document.getElementById(id.toString()+"_19").innerHTML=="编辑")
-				{
-					n.innerHTML = n.childNodes[0].value;
-					setall(id);
 
-				}
-				else
-				{
-					/*switch(i)
-					{
-						case 9:
-							n.innerHTML = "<input type='text' name=Cname value='" + document.getElementById(id.toString()+"_"+ i.toString()).innerHTML + "' />";
-							alert(n.innerHTML);
-							break;
-						case 10:
-							n.innerHTML = "<input type='text' name=MSID value='" + document.getElementById(id.toString()+"_"+ i.toString()).innerHTML + "' />";
-							break;
-						case 11:
-							n.innerHTML = "<input type='text' name=starttime value='" + document.getElementById(id.toString()+"_"+ i.toString()).innerHTML + "' />";
-							break;
-						case 12:
-							n.innerHTML = "<input type='text' name=Cendtime value='" + document.getElementById(id.toString()+"_"+ i.toString()).innerHTML + "' />";
-							break;
-						case 15:
-							n.innerHTML = "<input type='text' name=numGuest value='" + document.getElementById(id.toString()+"_"+ i.toString()).innerHTML + "' />";
-							break;
-						case 16:
-							n.innerHTML = "<input type='text' name=sign value='" + document.getElementById(id.toString()+"_"+ i.toString()).innerHTML + "' />";
-							break;
-						case 17:
-							n.innerHTML = "<input type='text' name=Signtime value='" + document.getElementById(id.toString()+"_"+ i.toString()).innerHTML + "' />";
-							break;
-					}*/
-
-					n.innerHTML = "<input type='text' id='"+id.toString()+"_"+(i+20).toString()+"' value='" + document.getElementById(id.toString()+"_"+ i.toString()).innerHTML + "' />";
-				}
-			}
-		}
-	}
-	
-	function add(id){
-		var n = document.getElementById(id.toString()+"_participant");
-		if (n.childNodes[0].value)
-		{
-			n.innerHTML = n.childNodes[0].value;
-			setall(id);
-		}
-		else
-			n.innerHTML = "<input type='text' value='" + document.getElementById(id.toString()+"_participant").innerHTML + "' />";
-	}
-	
-	function setall(id)
-	{
-		var n = document.getElementById(id.toString()+"_13");
-		var str = document.getElementById(id.toString()+"_participant").innerHTML;
-		var people = str.toString().split(",")
-		n.innerHTML = people.length + parseInt(document.getElementById(id.toString()+"_15").innerHTML);
-	}
-	
-$(document).ready(function(){
-  $("button").click(function(){
-    $("p").hide();
-  });
-});
-</script>
 </body>
 </html>

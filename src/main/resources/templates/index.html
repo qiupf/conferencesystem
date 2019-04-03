@@ -1,61 +1,61 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head>
-<meta charset="utf-8">
-<title>无标题文档</title>
-<link rel="stylesheet" href="/css/style.css" />
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 
 <body>
-<img src="/img/background2.png" />
-	<div class="header">
-		<strong><a class="title" href="index.html">智能会议室管理系统</a></strong>
-		<a class="header_right" href="exit">退出</a>
-		<a id="login" th:text="${session.Sname}">登录</a>
-		<a class="header_right">你好</a>
+<img src="/img/background2.png"/>
+<div class="header">
+    <strong><a class="title" href="index.html">智能会议室管理系统</a></strong>
+    <a class="header_right" href="exit">退出</a>
+    <a id="login" th:text="${session.Sname}">登录</a>
+    <a class="header_right">你好</a>
+</div>
+<div class="main">
+    <div id="menu">
+        <ul>
+            <li class="menu1" onClick="page(1)" style="cursor: pointer">预订</li>
+            <li class="menu1" onClick="page(2)" style="cursor: pointer">我的预定</li>
+            <li class="menu1" onClick="page(3)" style="cursor: pointer">最新会议</li>
+            <li class="menu1" onClick="page(4)" style="cursor: pointer">历史会议</li>
+            <li class="menu1" onClick="page(6)" style="cursor: pointer">会议室预定情况</li>
+            <li class="menu1" onClick="page(5)" style="cursor: pointer">个人信息</li>
+        </ul>
+
     </div>
-	<div class="main">
-		<div id="menu">
-    		<ul>
-    			<li class="menu1"  onClick="page(1)">预订</li>
-				<li class="menu1"  onClick="page(2)">我的预定</li>
-				<li class="menu1"  onClick="page(3)">最新会议</li>
-				<li class="menu1"  onClick="page(4)">历史会议</li>
-				<li class="menu1"  onClick="page(6)">会议室预定情况</li>
-    			<li class="menu1" onClick="page(5)">个人信息</li>
-    		</ul>
-    	
-   	 	</div>
-    	<div id="page">
-    		<iframe src="html/book.html" class="page1" id="frame" frameborder="0"></iframe>
-    	</div>
-	</div>
+    <div id="page">
+        <iframe src="html/book.html" class="page1" id="frame" frameborder="0"></iframe>
+    </div>
+</div>
 <script type="text/javascript">
-    function page(n){
-		switch(n){
-			case 1:
-				document.getElementById("frame").src = "/html/book.html";           //预定
-				break;
-			case 2:	
-				document.getElementById("frame").src = "/html/mymeeting1.html";              //个人中心
-				break;
-			case 3:	
-				document.getElementById("frame").src = "/html/mymeeting2.html";               //消息
-				break;
-			case 4:	
-				document.getElementById("frame").src = "/html/mymeeting3.html";
-				break;
-			case 5:
-				document.getElementById("frame").src = "/html/myinfo.html";
-				break;
-			case 6:
-				document.getElementById("frame").src = "/html/state2.html";
-				break;
-		}
-	}
-	
-	
+    function page(n) {
+        switch (n) {
+            case 1:
+                document.getElementById("frame").src = "/html/book.html";           //预定
+                break;
+            case 2:
+                document.getElementById("frame").src = "/html/mymeeting1.html";     //我的预定
+                break;
+            case 3:
+                document.getElementById("frame").src = "/html/mymeeting2.html";     //最新会议
+                break;
+            case 4:
+                document.getElementById("frame").src = "/html/mymeeting3.html";     //历史会议
+                break;
+            case 5:
+                document.getElementById("frame").src = "/html/myinfo.html";         //个人信息
+                break;
+            case 6:
+                document.getElementById("frame").src = "/html/state2.html";         //会议室预定情况
+                break;
+        }
+    }
+
+
 </script>
-    
+
 </body>
 </html>

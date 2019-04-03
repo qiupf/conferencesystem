@@ -1,69 +1,69 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<title>无标题文档</title>
-<link rel="stylesheet" href="/css/style.css" />
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 
 <body>
-<img src="/img/background2.png" />
-	<div class="header">
-   	  <strong><a class="title" href="index.html">智能会议室管理系统（管理员端）</a></strong>
-		<a class="header_right" style="margin-right: 20px" th:text="${session.Sname}"/>
-    </div>
-	<div class="main">
+<img src="/img/background2.png"/>
+<div class="header">
+    <strong><a class="title" href="index.html">智能会议室管理系统（管理员端）</a></strong>
+    <a class="header_right" style="margin-right: 20px" th:text="${session.Sname}"/>
+</div>
+<div class="main">
     <div id="menu">
-    	<ul>
-    		<li class="menu1" onClick="page(1)">
-    			会议室预定情况
-    		</li>
-    		<li class="menu1" onClick="page(2)">
-    			添加会议
-    		</li>
-    		<li class="menu1" onClick="page(3)">
-    			修改预定请求
-    		</li>
-    		<li class="menu1" onClick="page(4)">
-    			添加会议室
-    		</li>
-			<li class="menu1" onClick="page(8)">
-				添加员工
-			</li>
-			<li class="menu1" onClick="page(9)">
-				添加地图
-			</li>
-    	</ul>
-    	
+        <ul>
+            <li class="menu1" onClick="page(1)" style="cursor: pointer">
+                会议室预定情况
+            </li>
+            <li class="menu1" onClick="page(2)" style="cursor: pointer">
+                添加会议
+            </li>
+            <li class="menu1" onClick="page(3)" style="cursor: pointer">
+                修改预定请求
+            </li>
+            <li class="menu1" onClick="page(4)" style="cursor: pointer">
+                添加会议室
+            </li>
+            <li class="menu1" onClick="page(8)" style="cursor: pointer">
+                添加员工
+            </li>
+            <li class="menu1" onClick="page(9)" style="cursor: pointer">
+                添加地图
+            </li>
+        </ul>
+
     </div>
     <div id="page">
-    	<iframe src="/html/mymeeting1.html" class="page1" id="frame" frameborder="0"></iframe>
+        <iframe src="/html/mymeeting1.html" class="page1" id="frame" frameborder="0"></iframe>
     </div>
-	</div>
+</div>
 <script type="text/javascript">
-    function page(n){
-		switch(n){
-			case 1:
-				document.getElementById("frame").src = "/html/state1.html";
-				break;
-			case 2:	
-				document.getElementById("frame").src = "/html/bookadmin.html";
-				break;
-			case 3:	
-				document.getElementById("frame").src = "/html/mymeeting1.html";
-				break;
-			case 4:	
-				document.getElementById("frame").src = "/html/addmeetingroom.html";
-				break;
-			case 8:
-				document.getElementById("frame").src = "/html/addstaff.html";
-				break;
-			case 9:
-				document.getElementById("frame").src = "/html/addmap.html";
-				break;
-		}
-	}
+    function page(n) {
+        switch (n) {
+            case 1:
+                document.getElementById("frame").src = "/html/state1.html";
+                break;
+            case 2:
+                document.getElementById("frame").src = "/html/bookadmin.html";
+                break;
+            case 3:
+                document.getElementById("frame").src = "/html/mymeeting1.html";
+                break;
+            case 4:
+                document.getElementById("frame").src = "/html/addmeetingroom.html";
+                break;
+            case 8:
+                document.getElementById("frame").src = "/html/addstaff.html";
+                break;
+            case 9:
+                document.getElementById("frame").src = "/html/addmap.html";
+                break;
+        }
+    }
 </script>
-    
+
 </body>
 </html>

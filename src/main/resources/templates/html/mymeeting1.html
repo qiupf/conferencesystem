@@ -1,77 +1,79 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<title>无标题文档</title>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
 
-<link rel="stylesheet" href="/css/mymeeting1.css" />
+    <link rel="stylesheet" href="/css/mymeeting1.css"/>
 </head>
 
 <body>
-	<table class="delete">
-		<caption>已预订会议室</caption>
-		<tr>
-			<th>日期</th>
-			<th>时间</th>
-			<th>会议室</th>
-			<th>地址</th>
-			<th>主题</th>
-			<th>申请人</th>
-			<th>状态</th>
-		</tr>
-		<tr id="001" th:each="meeting : ${meetingList}">
-			<td id="001_5" th:text="${meeting.Cstarttime}"/>
-			<td id="001_11" th:text="${meeting.starttime}"/>
-			<td id="001_1" th:text="${meeting.RoomID}" />
-			<td id="001_3" th:text="${meeting.Raddress}"/>
-			<td id="001_8" th:text="${meeting.RSID}"/>
-			<td id="001_9" th:text="${meeting.Cname}"/>
-			<td>成功</td>
-		</tr>
-	</table>
-	<br>
+<table class="delete">
+    <caption>已预订会议室</caption>
+    <tr>
+        <th>日期</th>
+        <th>时间</th>
+        <th>会议室</th>
+        <th>地址</th>
+        <th>主题</th>
+        <th>申请人</th>
+        <th>状态</th>
+        <th>是否撤销</th>
+    </tr>
+    <tr id="001" th:each="meeting : ${meetingList}">
+        <td id="001_5" th:text="${meeting.Cstarttime}"/>
+        <td id="001_11" th:text="${meeting.starttime}"/>
+        <td id="001_1" th:text="${meeting.RoomID}"/>
+        <td id="001_3" th:text="${meeting.Raddress}"/>
+        <td id="001_9" th:text="${meeting.Cname}"/>
+        <td id="001_8" th:text="${meeting.RSID}"/>
+        <td>成功</td>
+        <td><a href="#">撤销</a></td>
+    </tr>
+</table>
+<br>
 
 <!--<table class="delete">-->
-	<!--<tr>-->
-		<!--<th>日期</th>-->
-		<!--<th>时间</th>-->
-		<!--<th>会议室</th>-->
-		<!--<th>地址</th>-->
-		<!--<th>主题</th>-->
-		<!--<th>主会人</th>-->
-		<!--<th>状态</th>-->
-		<!--<th></th>-->
-	<!--</tr>-->
-	<!--<tr id="001">-->
-		<!--<td id="001_1">2019.02.11</td>-->
-		<!--<td id="001_2">9:00-10:00</td>-->
-		<!--<td id="001_3">会议室101</td>-->
-		<!--<td id="001_4">广b101</td>-->
-		<!--<td id="001_5">市场评估会</td>-->
-		<!--<td id="001_6">张三丰</td>-->
-		<!--<td id="001_18">成功</td>-->
-		<!--<td><button id="001_19" onClick="reset('001')">撤销</button></td>-->
-	<!--</tr>-->
-	<!--<tr>-->
-		<!--<td>2019.02.15</td>-->
-		<!--<td>9:00-10:00</td>-->
-		<!--<td>会议室105</td>-->
-		<!--<td>广b105</td>-->
-		<!--<td>市场评估会</td>-->
-		<!--<td>李四</td>-->
-		<!--<td>成功</td>-->
-		<!--<td><button onClick="reset('001')">撤销</button></td>-->
-	<!--</tr>-->
-	<!--<tr>-->
-		<!--<td>2019.02.25</td>-->
-		<!--<td>9:00-10:00</td>-->
-		<!--<td>会议室103</td>-->
-		<!--<td>广b103</td>-->
-		<!--<td>市场评估会</td>-->
-		<!--<td>王五</td>-->
-		<!--<td>失败</td>-->
-		<!--<td></td>-->
-	<!--</tr>-->
+<!--<tr>-->
+<!--<th>日期</th>-->
+<!--<th>时间</th>-->
+<!--<th>会议室</th>-->
+<!--<th>地址</th>-->
+<!--<th>主题</th>-->
+<!--<th>主会人</th>-->
+<!--<th>状态</th>-->
+<!--<th></th>-->
+<!--</tr>-->
+<!--<tr id="001">-->
+<!--<td id="001_1">2019.02.11</td>-->
+<!--<td id="001_2">9:00-10:00</td>-->
+<!--<td id="001_3">会议室101</td>-->
+<!--<td id="001_4">广b101</td>-->
+<!--<td id="001_5">市场评估会</td>-->
+<!--<td id="001_6">张三丰</td>-->
+<!--<td id="001_18">成功</td>-->
+<!--<td><button id="001_19" onClick="reset('001')">撤销</button></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>2019.02.15</td>-->
+<!--<td>9:00-10:00</td>-->
+<!--<td>会议室105</td>-->
+<!--<td>广b105</td>-->
+<!--<td>市场评估会</td>-->
+<!--<td>李四</td>-->
+<!--<td>成功</td>-->
+<!--<td><button onClick="reset('001')">撤销</button></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>2019.02.25</td>-->
+<!--<td>9:00-10:00</td>-->
+<!--<td>会议室103</td>-->
+<!--<td>广b103</td>-->
+<!--<td>市场评估会</td>-->
+<!--<td>王五</td>-->
+<!--<td>失败</td>-->
+<!--<td></td>-->
+<!--</tr>-->
 <!--</table>-->
 </body>
 </html>

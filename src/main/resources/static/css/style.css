@@ -1,105 +1,107 @@
 /* CSS Document */
-html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select,iframe {
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select, iframe {
     margin: 0;
     padding: 0;
 }
 
 
 body {
-	background-image: url('../img/background.png') ;
-	height: auto;
-	font-family: 'Microsoft Yahei';
+    background-image: url('../img/background.png');
+    height: auto;
+    font-family: 'Microsoft Yahei';
 }
 
 .header {
-	background-color: #ffffff;
-	height: 47px;
-	width: 100%;
-	margin-bottom: 2px;
+    background-color: #ffffff;
+    height: 47px;
+    width: 100%;
+    margin-bottom: 2px;
 }
 
-.title{
-	color: #707070;
-	display: inline-block;
-	text-decoration:none;
-	outline:none;
-	padding-left: 20px;
-	padding-top: 10px;
-	font-size: 20px;
+.title {
+    color: #707070;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    padding-left: 20px;
+    padding-top: 10px;
+    font-size: 20px;
 }
+
 .header_right {
-	padding-top: 14px;
-	float:right;
-	padding-right: 5px;
-	padding-left: 8px;
+    padding-top: 14px;
+    float: right;
+    padding-right: 5px;
+    padding-left: 8px;
 }
+
 #login {
-	float: right;
-	padding-right: 2px;
-	padding-top: 14px;
-	font-size: 16px;
+    float: right;
+    padding-right: 2px;
+    padding-top: 14px;
+    font-size: 16px;
 }
 
 .header a:hover {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 #menu {
-	background-color: #ffffff;
-	width: 220px;
-	height: auto;
-	color: #707070;
-	padding-left: 30px;
-	padding-top: 10px;
-	float:left;
-	z-index: 0;
+    background-color: #ffffff;
+    width: 220px;
+    height: auto;
+    color: #707070;
+    padding-left: 30px;
+    padding-top: 10px;
+    float: left;
+    z-index: 0;
 }
 
-.menu1{
-	padding-top: 5px;
-	list-style-type: none;
-	padding-bottom: 20px;
+.menu1 {
+    margin-top: 5px;
+    list-style-type: none;
+    margin-bottom: 20px;
 }
 
-.menu2{
-	padding-top: 10px;;
-	padding-left: 20px;
-	list-style-type: none;
+.menu2 {
+    padding-top: 10px;;
+    padding-left: 20px;
+    list-style-type: none;
 }
 
-.menu3{
-	height: 30px;
+.menu3 {
+    height: 30px;
 }
 
-#page{
-	position:absolute;
-	width: 861px;
+#page {
+    position: absolute;
+    width: 861px;
 
-	height: 100%;
-	padding-left: 200px;
-	background: white;
-	z-index: -10;
+    height: 100%;
+    padding-left: 200px;
+    background: white;
+    z-index: -10;
 }
 
-.page1{
-	padding-left: 50px;
-	width: 911px;
-	height: 100%;
+.page1 {
+    padding-left: 50px;
+    width: 911px;
+    height: 100%;
 }
 
-.main{
-	margin: 0 auto;
-	width: 1130px;
-	height: auto;
+.main {
+    margin: 0 auto;
+    width: 1130px;
+    height: auto;
 }
 
-iframe{
-	scrolling : no;
+iframe {
+    scrolling: no;
 }
 
-img{
-	position: absolute;
-	left: 1269px;
-	top:47px;
+img {
+    position: absolute;
+    left: 1269px;
+    top: 47px;
 }
 

@@ -1,0 +1,44 @@
+body{
+    background-image: url('../img/background.png') ;
+}
+
+.main{
+    background: #E0DAD0;
+    width: 360px;
+    height: 360px;
+    position: absolute;
+    top: 120px;
+    left: 800px;
+}
+
+input{
+    border: none;
+    width: 200px;
+    background: #E0DAD0;
+    border-bottom: #707070 solid thin;
+}
+
+.username{
+    margin-top: 60px;
+    margin-bottom: 40px;
+    margin-left: 35px;
+}
+
+.password{
+    margin-left: 35px;
+}
+
+button{
+    width: 290px;
+    height: 35px;
+    margin-left: 35px;
+    margin-top: 40px;
+    background: #ffddd6;
+    font-size: medium;
+}
+
+.rememberme{
+    margin-top: 35px;
+    margin-left: 45px;
+    font-size: smaller;
+}

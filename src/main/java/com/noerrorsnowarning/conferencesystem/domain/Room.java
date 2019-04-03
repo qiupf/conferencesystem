@@ -9,18 +9,16 @@ public class Room {
     private String RoomID;
     private String Raddress;
     private Integer Rcapacity;
-    private Integer Rjurisdiction;
     private Time Rstarttime;
     private Time Rendtime;
     private String Equip;
     private String equips;
 
-    public Room(String RoomID, String Raddress, Integer Rcapacity, Integer Rjuridsdiction, Time Rstarttime, Time Rendtime){
+    public Room(String RoomID, String Raddress, Integer Rcapacity, Time Rstarttime, Time Rendtime){
 
         this.RoomID=RoomID;
         this.Raddress=Raddress;
         this.Rcapacity=Rcapacity;
-        this.Rjurisdiction=Rjuridsdiction;
         this.Rstarttime=Rstarttime;
         this.Rendtime=Rendtime;
 
@@ -49,14 +47,6 @@ public class Room {
 
     public void setRcapacity(Integer rcapacity) {
         Rcapacity = rcapacity;
-    }
-
-    public Integer getRjurisdiction() {
-        return Rjurisdiction;
-    }
-
-    public void setRjurisdiction(Integer rjurisdiction) {
-        Rjurisdiction = rjurisdiction;
     }
 
     public Time getRstarttime() {

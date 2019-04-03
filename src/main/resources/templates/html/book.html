@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	<div class="vague">
+<!--	<div class="vague">
 		<form th:action="@{/goTo}" method="post">
 			您将于
 			<select name="day">
@@ -39,7 +39,17 @@
 			个小时。
 			<button id="vaguefind" type="submit">查找</button>
 		</form>
+	</div>--->
+	<div class="comment" onclick="fillin(1)">
+		<img width="220px" src="/img/commend1.png"/>
 	</div>
+	<div class="comment" onclick="fillin(2)">
+		<img width="220px" src="/img/commend2.png"/>
+	</div>
+	<div class="comment" onclick="fillin(3)">
+		<img width="220px" src="/img/commend3.png"/>
+	</div>
+<br><br><br><br><br><br>
 	<div class="search">
 	<form th:action="@{/searchRoom}" method="post" id="searchform1">                <!----精确查找表单---->
 		会议室编号：
@@ -49,14 +59,14 @@
 		<button type="submit">精确查找</button>
 	</form>
 	</div>
-	
+
 	<form th:action="@{/search}" method="post" id="searchform2">                  <!-----条件查找表单----->
  	<div class="choice">
 		 <div class="txt">
 			 <span id="data_txt">会议日期：</span><br>
 			 <input type="date" id="data" name="date"/>
 		 </div>
-		 <div class="txt">	 
+		 <div class="txt">
 			 <span id="available_time_start_txt">开始占用时间：</span>
 			 <span id="available_time_end_txt">结束占用时间：</span><br>
 			 <input type="time" id="available_time_start" name="startTime"/>
@@ -69,22 +79,21 @@
 	</div>
 	<div class="equipment">
 		<div class="equipment0">
-		<span id="设备_txt">设备需求：</span>
-			<table>
+			<table float="left">
 				<td th:each="equip : ${equipList}">
 					<input name="equip" type="checkbox" th:value="${equip.EID}" th:text="${equip.Ename}">
 				</td>
 			</table>
 		</div>
-		<div class="show">
+		<!---<div class="show">
 			<input name="显示已占用" type="checkbox" id="showall"/>显示已被预定的会议室
-		</div>
+		</div>--->
 		<button id="find" type="submit">查找</button>
 	</div>
 	</form>
-	
+
 	<div class="mytable">
-		<table width="100%" border="1" cellpadding="0" cellspacing="1">
+		<table class="delete" width="100%">
 			<tr>
 				<th class="th1">会议室编号</th>
 				<th class="th2">会议室地址</th>
@@ -97,7 +106,8 @@
 			<tr th:each="room : ${roomList}">
 				<td th:text="${room.RoomID}"/>
 				<td th:text="${room.Raddress}"/>
-				<td th:text="${room.Rstarttime}"/>
+				<!---<td th:text="${room.Rstarttime}"/>--->
+				<td>08:00-22:00</td>
 				<td th:text="${room.Rcapacity}"/>
 				<td th:text="${room.equips}"/>
 				<form th:action="@{/getRoom}" method="post">
@@ -110,12 +120,50 @@
 
 		</table>
 		<br>
-		//点击预定，如果post成功会跳转到book2，填写会议相关信息。
 	</div>
 	<script type="text/javascript">
-    function page(){
-		window.location.href="book2.html";
-	}
+		function fillin(n) {
+			var n = n.toString();
+			var data = document.getElementById("data");
+			var start = document.getElementById("available_time_start");
+			var end = document.getElementById("available_time_end");
+			var number = document.getElementById("number");
+			var equip = document.getElementsByName("equip");
+			switch (n) {
+				case '1':
+					data.value="2019-03-28";
+					start.value="09:30";
+					end.value="10:30";
+					number.value="30";
+					for(var i=0;i<equip.length;i++)
+						equip[i].checked=false;
+					equip[0].checked=true;
+					equip[1].checked=true;
+					break;
+				case '2':
+					data.value="2019-03-29";
+					start.value="11:00";
+					end.value="11:30";
+					number.value="20";
+					for(var i=0;i<equip.length;i++)
+						equip[i].checked=false;
+					equip[0].checked="true";
+					break;
+				case '3':
+					data.value="2019-04-02";
+					start.value="16:00";
+					end.value="17:30";
+					number.value="15";
+					for(var i=0;i<equip.length;i++)
+						equip[i].checked=false;
+					equip[0].checked="true";
+					equip[1].checked="true";
+					break;
+			}
+		}
+		function page(){
+			window.location.href="book2.html";
+		}
 	</script>
 </body>
 </html>

@@ -6,33 +6,36 @@ html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input,
 
 
 body {
-	/*background:#2E363F;*/
+	background-image: url('../img/background.png') ;
+	height: auto;
 	font-family: 'Microsoft Yahei';
 }
 
 .header {
-	background-color: #1f262d;
-	height: 50px;
+	background-color: #ffffff;
+	height: 47px;
 	width: 100%;
+	margin-bottom: 2px;
 }
 
-.header h1{
-	float:left;
-
-	
-}
-.header a{
-	color:#A4D3EE;
+.title{
+	color: #707070;
+	display: inline-block;
 	text-decoration:none;
 	outline:none;
 	padding-left: 20px;
 	padding-top: 10px;
 	font-size: 20px;
 }
-
+.header_right {
+	padding-top: 14px;
+	float:right;
+	padding-right: 5px;
+	padding-left: 8px;
+}
 #login {
 	float: right;
-	padding-right: 20px;
+	padding-right: 2px;
 	padding-top: 14px;
 	font-size: 16px;
 }
@@ -42,10 +45,10 @@ body {
 }
 
 #menu {
-	background-color: #2E363F;
-	width: 180px;
-	height: 700px;
-	color:#A4D3EE;
+	background-color: #ffffff;
+	width: 220px;
+	height: auto;
+	color: #707070;
 	padding-left: 30px;
 	padding-top: 10px;
 	float:left;
@@ -55,6 +58,7 @@ body {
 .menu1{
 	padding-top: 5px;
 	list-style-type: none;
+	padding-bottom: 20px;
 }
 
 .menu2{
@@ -68,16 +72,34 @@ body {
 }
 
 #page{
-	background-color: #EEEEEE;
 	position:absolute;
-	padding-left: 250px;
-	width: 1269px;
+	width: 861px;
+
+	height: 100%;
+	padding-left: 200px;
+	background: white;
 	z-index: -10;
 }
 
 .page1{
-	
-	width: 100%;
-	height: 700px;
+	padding-left: 50px;
+	width: 911px;
+	height: 100%;
+}
+
+.main{
+	margin: 0 auto;
+	width: 1130px;
+	height: auto;
+}
+
+iframe{
+	scrolling : no;
+}
+
+img{
+	position: absolute;
+	left: 1269px;
+	top:47px;
 }
 

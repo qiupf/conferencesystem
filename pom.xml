@@ -44,13 +44,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.abel533</groupId>
-            <artifactId>ECharts</artifactId>
-            <version>3.0.0.5</version>
-        </dependency>
-
-
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.14</version>

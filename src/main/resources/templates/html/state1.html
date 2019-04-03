@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id="main" style="height: 400px;width: 800px"></div>
+<div id="main2" style="height: 400px;width: 800px"></div>
+<div id="main3" style="height: 400px;width: 800px"></div>
+
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script type="text/javascript">
+	// 路径配置
+	f1();
+	f2();
+	f3();
+	
+	function f1()
+	{
+	require.config({
+		paths: {
+			echarts: 'http://echarts.baidu.com/build/dist'
+		}
+	});
+	require(
+            [
+                'echarts',
+                'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+				'echarts/chart/line'
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                option = {
+    tooltip : {
+        trigger: 'axis'
+    },
+					 title : {
+                text: '会议室使用率和使用次数',
+            },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    legend: {
+        data:['使用率','使用次数']
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['101会议室','102会议室','103会议室','104会议室','105会议室']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            name : '使用率',
+            axisLabel : {
+                formatter: '{value} %'
+            }
+        },
+        {
+            type : 'value',
+            name : '使用次数',
+            axisLabel : {
+                formatter: '{value} 次'
+            }
+        }
+    ],
+    series : [
+
+        {
+            name:'使用率',
+            type:'bar',
+            data:[45, 55, 73, 44, 40]
+        },
+        {
+            name:'使用次数',
+            type:'line',
+            yAxisIndex: 1,
+            data:[20, 30, 35, 20, 22]
+        }
+    ]
+};
+                    
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+	}
+	
+	function f2()
+	{
+		require.config({
+		paths: {
+			echarts: 'http://echarts.baidu.com/build/dist'
+		}
+	});
+	require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main2')); 
+                
+                var idx = 1;
+	option = {
+    timeline : {
+        data : [
+              '101', '102', '103','104','105'
+            
+        ],
+        label : {
+            formatter : function(s) {
+                return s.slice(0, 6)+'会议室';
+            }
+        }
+    },
+    options : [
+        {
+            title : {
+                text: '会议室使用时段统计图',
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                data:['上午','下午','晚上']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true, 
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'left',
+                                max: 1700
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            series : [
+                {
+                    name:'浏览器（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'上午'},
+                        {value: idx ++* 64  + 160,  name:'下午'},
+                        {value: idx * 32  + 320,  name:'晚上'}
+					]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'浏览器（数据纯属虚构）',
+                    type:'pie',
+                    data:[
+                        {value: idx * 128 + 80,  name:'上午'},
+                        {value: idx ++* 64  + 160,  name:'下午'},
+                        {value: idx * 32  + 320,  name:'晚上'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'浏览器（数据纯属虚构）',
+                    type:'pie',
+                    data:[
+                        {value: idx * 128 + 80,  name:'上午'},
+                        {value: idx ++* 64  + 160,  name:'下午'},
+                        {value: idx * 32  + 320,  name:'晚上'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'浏览器（数据纯属虚构）',
+                    type:'pie',
+                    data:[
+                        {value: idx * 128 + 80,  name:'上午'},
+                        {value: idx ++* 64  + 160,  name:'下午'},
+                        {value: idx * 32  + 320,  name:'晚上'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'浏览器（数据纯属虚构）',
+                    type:'pie',
+                    data:[
+                        {value: idx * 128 + 80,  name:'上午'},
+                        {value: idx ++* 64  + 160,  name:'下午'},
+                        {value: idx * 32  + 320,  name:'晚上'}
+                    ]
+                }
+            ]
+        }
+    ]
+};
+                    
+
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+	}
+	
+	function f3()
+	{
+	require.config({
+		paths: {
+			echarts: 'http://echarts.baidu.com/build/dist'
+		}
+	});
+	require(
+            [
+                'echarts',
+                'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main3')); 
+                
+                option = {
+    title : {
+        text: '会议签到情况表',
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:[
+            '正常签到','请假','迟到','旷会'
+        ]
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    grid: {y: 70, y2:30, x2:20},
+    xAxis : [
+        {
+            type : 'category',
+            data : ['美工部','编辑部','运营部','技术部','销售部']
+        },
+        {
+            type : 'category',
+            axisLine: {show:false},
+            axisTick: {show:false},
+            axisLabel: {show:false},
+            splitArea: {show:false},
+            splitLine: {show:false},
+            data : ['美工部','编辑部','运营部','技术部','销售部']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel:{formatter:'{value}'}
+        }
+    ],
+    series : [
+        {
+            name:'正常签到',
+            type:'bar',
+			stack:"statu",
+            itemStyle: {normal: {color:'rgba(193,35,43,1)', label:{show:true}}},
+            data:[150,155,130,140, 132]
+        },
+        {
+            name:'请假',
+            type:'bar',
+			stack:"statu",
+            itemStyle: {normal: {color:'rgba(181,195,52,1)', label:{show:true,textStyle:{color:'#27727B'}}}},
+            data:[20,10,12,18,11]
+        },
+        {
+            name:'迟到',
+            type:'bar',
+			stack:"statu",
+            itemStyle: {normal: {color:'rgba(252,206,16,1)', label:{show:true,textStyle:{color:'#E87C25'}}}},
+            data:[12,14,18,15,14]
+        },
+        {
+            name:'旷会',
+            type:'bar',
+			stack:"statu",
+            itemStyle: {normal: {color:'rgba(193,35,43,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'\n'):'';}}}},
+            data:[5,3,1,2,0]
+        }
+    ]
+};
+                    
+                    
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+	}
+</script>
+
+
+</body>
+</html>

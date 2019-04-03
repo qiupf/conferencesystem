@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>order</title>
 </head>
 <body>
     <div style="border-style: solid;border-width: 1px;width: 800px;height: 30px">
-        <input hidden th:value="${meeting.ConferenceID}" id="001_28"/>
-        会议室地址：<span id="address"></span>
+        <input hidden th:value="${conInfo.ConferenceID}" id="001_28"/>
+        会议室地址：<span id="address" th:value="${conInfo.Raddress}"/>
         使用时间：
         会议时长：<span></span>
         参会人数：

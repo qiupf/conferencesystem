@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
-<link rel="stylesheet" href="../../static/css/mymeeting3.css" />
+<link rel="stylesheet" href="/css/mymeeting3.css" />
 </head>
 
 <body>
+<!---
 <table class="title">
 		<caption>历史会议</caption>
 		<tr>
@@ -37,6 +38,36 @@
 			<td th:text="${conference.sign}"/>
 			<td th:text="${conference.state}"/>
 		</tr>
-	</table>
+	</table>--->
+
+<table class="delete">
+	<tr>
+		<th>日期</th>
+		<th>时间</th>
+		<th>会议室</th>
+		<th>地址</th>
+		<th>主题</th>
+		<th>主会人</th>
+		<th>到会情况</th>
+	</tr>
+	<tr id="001">
+		<td id="001_1">2019.02.11</td>
+		<td id="001_2">9:00-10:00</td>
+		<td id="001_3">会议室101</td>
+		<td id="001_4">广b101</td>
+		<td id="001_5">市场评估会</td>
+		<td id="001_6">张三丰</td>
+		<td id="001_18">正常</td>
+	</tr>
+	<tr>
+		<td>2019.02.15</td>
+		<td>9:00-10:00</td>
+		<td>会议室105</td>
+		<td>广b105</td>
+		<td>市场评估会</td>
+		<td>李四</td>
+		<td>迟到</td>
+	</tr>
+</table>
 </body>
 </html>

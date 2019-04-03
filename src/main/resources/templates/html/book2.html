@@ -3,34 +3,37 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
+	<link rel="stylesheet" href="/css/book.css" />
 </head>
 
 <body>
-//*为必填项<br><br>
-
-	会议室编号:001（不可更改）<br>
-	会议室地址:<p th:text="${conInfo.Raddress}"/> （不可更改）<br>
-	*会议日期:<input type="date">（如果使用 精确查找 预定，该项为空，如果使用 查找 预定，该项为查找时的日期，可更改）<br>
-	*会议室占用时间：<input type="time"> <input type="time">（同上）<br>
-	*会议名称：<input type="text"><br>
-	*主会人:<select>
-		<option value="白玉婷">白玉婷</option>
-		<option value="张慧群">张慧群</option>
-		</select> (默认是申请人，可更改）<br>
-	*会议开始时间：<input type="time">（默认是开始占用时间和结束占用时间，可更改）<br>
-	*会议结束时间：<input type="time"><br>
-	参会人数：10（不可更改，由参会人人数和外宾人数相加得到）<br>
-	参会人:<span id ="001_participant">白玉婷</span><button id="add" onClick="add('001')">添加</button><br>
-	<div id="staff" style="visibility : hidden">
+<!---//*为必填项<br><br>---->
+<div style="margin-top:30px;margin-left: 80px ">
+	<div class="margin">会议室编号:      10000</div>
+	<div class="margin">会议室地址:      广b101</div>
+	<div class="margin">会议日期:        <input type="date"></div>
+<!--（如果使用 精确查找 预定，该项为空，如果使用 查找 预定，该项为查找时的日期，可更改）--->
+	<div class="margin">会议室占用时间： <input type="time">-<input type="time"></div>
+	<div class="margin">会议名称：       <input type="text"></div>
+	<div class="margin">主会人:          <select>
+		<option value="小明">小明</option>
+		<option value="小红">小红</option>
+		</select> </div>
+	<div class="margin">会议开始时间：<input type="time"></div><!--（默认是开始占用时间和结束占用时间，可更改）-->
+	<div class="margin">会议结束时间：<input type="time"></div>
+	<div class="margin">参会人数：10</div>
+	<div class="margin">参会人:<span id ="001_participant">白玉婷</span><button id="add" onClick="add('001')">添加</button></div>
+<!---	<div  class="margin" id="staff" style="visibility : hidden">
 		部门：
 		<select>
 		<option value="白玉婷">xx部</option>
 		<option value="张慧群">张慧群</option>
 		</select>
-	</div> 
-	外宾人数：<input type="number" value="0"><br>
-	是否签到: <input type="checkbox"><br>
-	签到开始时间: <input type="time"><br>
-	<input type="submit"/>
+	</div>--->
+<div class="margin">外宾人数：<input type="number" value="0"></div>
+	<div class="margin">是否签到: <input type="checkbox"></div>
+	<div class="margin">签到开始时间: <input type="time"></div>
+	<button type="submit" style="width: 240px;margin-top: 20px">提交</button>
+</div>
 </body>
 </html>

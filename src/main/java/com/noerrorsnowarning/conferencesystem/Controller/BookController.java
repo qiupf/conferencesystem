@@ -55,10 +55,11 @@ public class BookController {
 
         String roomID = request.getParameter("RoomID");
         String user = (String) request.getSession().getAttribute("Sname");
-//        int result = reservedService.insertReserved(roomID, user);
         ConferenceInfo conferenceInfo=conferenceService.getCon(roomID,user);
+        conferenceInfo.setConferenceID(25);
+        System.out.println(conferenceInfo.getRaddress());
         model.addAttribute("conInfo",conferenceInfo);
-        return "html/book2";
+        return "html/order";
     }
 
     @RequestMapping(value = "/searchRoom", method = RequestMethod.POST)
@@ -105,7 +106,40 @@ public class BookController {
         String time=request.getParameter("time");
         System.out.println(day+" "+hour+" "+time);
 
+        return "html/order";
+    }
+
+    @RequestMapping(value = "/html/book2.html",method = RequestMethod.GET)
+    public String get(){
         return "html/book2";
     }
+
+    @RequestMapping(value = "/html/bookadmin.html", method = RequestMethod.GET)
+    public String bookadmin(Model model) {
+        List<Room> roomList = roomService.getRoom();
+        List<Equipment> equipmentList = equipmentService.getEquips();
+
+        model.addAttribute("equipList", equipmentList);
+
+        roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
+
+        model.addAttribute("roomList", roomList);
+//        model=setModel(model);
+        return "html/bookadmin";
+    }
+
+//    private Model setModel(Model model){
+//
+//        List<Room> roomList = roomService.getRoom();
+//        List<Equipment> equipmentList = equipmentService.getEquips();
+//
+//        model.addAttribute("equipList", equipmentList);
+//
+//        roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
+//
+//        model.addAttribute("roomList", roomList);
+//        return model;
+//
+//    }
 
 }

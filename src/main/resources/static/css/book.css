@@ -1,20 +1,22 @@
 /* CSS Document */
 
 body{
-	width: 800px;
+	width: 900px;
+	height: 760px;
 	font-family: 'Microsoft Yahei';
+	font-weight: lighter;
 }
 
 .vague{
 	width: 800px;
-	border: #000000,thin,solid;
+	border: #000000 thin solid;
 	padding-left: 50px;
 }
 
 .search{
 	width: 800px;
-	border:#9897FF,thin,solid;
 	padding-left: 50px;
+	padding-top: 10px;
 }
 
 .choice{
@@ -32,9 +34,8 @@ body{
 .equipment{
 	width: 800px;
 	float:left;
-	padding-top: 20px;
 	padding-left: 50px;
-	height: 60px;
+	height: 40px;
 }
 
 .equipment0{
@@ -47,7 +48,8 @@ body{
 }
 
 #find{
-	margin-left: 50px;
+	margin-left: 170px;
+	margin-top: 10px;
 	float:left;
 }
 
@@ -55,27 +57,46 @@ body{
 	width: 50px;
 	height: 20px;
 }
-.mytable{
-	padding-left: 50px;
+.delete{
+	width: 750px;
+	text-align: center;
+	border:1px solid #707070;
+	border-collapse:collapse;
+}
+
+th{
+	font-weight: lighter;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+
+tr{
+	border-bottom: 1px solid #c1c1c1;
+}
+
+td{
+	font-weight: lighter;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+button{
+	margin-left: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background: white;
+	border: solid 1px #707070;
+	border-radius:2px;
 	text-align: center;
 }
 
-.th1,.th2{
-	width: 100px;
+.comment{
+	float:left;
+	width: auto;
+	padding-left: 20px;
+	margin-top: 20px;
 }
 
-.th3{
-	width: 180px;
-}
-
-.th4{
-	width: 50px;
-}
-
-.th5{
-	width: 150px;
-}
-
-.th6{
-	width: 80px;
+.margin{
+	padding-bottom: 10px;
 }

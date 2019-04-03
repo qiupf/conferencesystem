@@ -3,13 +3,80 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
+	<link rel="stylesheet" href="/css/tablestyle.css" />
 </head>
 
 <body>
+<table class="delete">
+	<tr>
+		<th>编号</th>
+		<th>名称</th>
+		<th>地址</th>
+		<th>容量</th>
+		<th>等级</th>
+		<th>可使用时段</th>
+		<th>设备</th>
+	</tr>
+	<tr id="001">
+		<td id="001_1">10000</td>
+		<td id="001_2">101会议室</td>
+		<td id="001_3">广b101</td>
+		<td>23</td>
+		<td id="001_4">L1</td>
+		<td id="001_5">8:00-20:00</td>
+		<td id="001_6">话筒 网络通话</td>
+	</tr>
+	<tr>
+		<td>10002</td>
+		<td>102会议室</td>
+		<td>广b102</td>
+		<td>90</td>
+		<td>L2</td>
+		<td>8:00-20:00</td>
+		<td>投影仪 话筒 网络通话</td>
+	</tr>
+	<tr>
+		<td>10003</td>
+		<td>103会议室</td>
+		<td>广b103</td>
+		<td>34</td>
+		<td>L2</td>
+		<td>8:00-20:00</td>
+		<td>投影仪 话筒</td>
+	</tr>
+	<tr>
+		<td>10004</td>
+		<td>104会议室</td>
+		<td>广b104</td>
+		<td>123</td>
+		<td>L1</td>
+		<td>8:00-20:00</td>
+		<td>投影仪 话筒</td>
+	</tr>
+	<tr>
+		<td>10005</td>
+		<td>105会议室</td>
+		<td>广b105</td>
+		<td>5</td>
+		<td>L1</td>
+		<td>8:00-20:00</td>
+		<td>投影仪 网络通话</td>
+	</tr>
+	<tr>
+		<td>10006</td>
+		<td>106会议室</td>
+		<td>广b106</td>
+		<td>45</td>
+		<td>L1</td>
+		<td>8:00-20:00</td>
+		<td>无</td>
+	</tr>
+</table>
+<!---
 <div style="text-align: left">
 	<span style="font-size: 12px;color: red" th:text="${message}"/>
 	<form th:action="@{/html/addRoom/}" method="post">
-		编号：<label name="meetingroom_ID"/><br />    <!-----编号默认显示还未编的---->
+		编号：<label name="meetingroom_ID"/><br />
 		容纳量：<input name="volume" type="number" /><br />
 		地址：<input name="address" type="text" /><br />
 		等级：<input id="1" name="grade" type="radio" value="1" />1<input id="2" name="grade" type="radio" value="2" />2<br />
@@ -25,5 +92,8 @@
 		<input type="reset" value="重置" />
 	</form>
 </div>
+--->
+<button style="float:right;margin-right: 190px;margin-top: 15px;padding-bottom: 5px;padding-top: 5px;">添加</button>
+<button style="float:right;margin-top: 15px;padding-bottom: 5px;padding-top: 5px;">修改</button>
 </body>
 </html>

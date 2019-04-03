@@ -10,7 +10,6 @@ public class Staff {
     private String mobilenum;
     private String Sdept;
     private String Spost;
-    private int Sjurisdiction;
     private String faceFeature;
 
     public String getStaffID() {
@@ -75,14 +74,6 @@ public class Staff {
 
     public void setSpost(String spost) {
         Spost = spost;
-    }
-
-    public int getSjurisdiction() {
-        return Sjurisdiction;
-    }
-
-    public void setSjurisdiction(int sjurisdiction) {
-        Sjurisdiction = sjurisdiction;
     }
 
     public String getFaceFeature() {

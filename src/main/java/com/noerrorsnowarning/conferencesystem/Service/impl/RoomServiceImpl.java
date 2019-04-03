@@ -131,7 +131,7 @@ public class RoomServiceImpl implements RoomService {
         }
 
         //插入新会议室
-        Room room = new Room(id, address, intCapacity, intJurisdiction, startTime, endTime);
+        Room room = new Room(id, address, intCapacity, startTime, endTime);
 
         return room;
     }

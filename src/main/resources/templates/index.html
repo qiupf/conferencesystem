@@ -7,61 +7,49 @@
 </head>
 
 <body>
+<img src="/img/background2.png" />
 	<div class="header">
-   	  <h1><a href="index.html">智能会议室管理系统</a></h1>
+		<strong><a class="title" href="index.html">智能会议室管理系统</a></strong>
+		<a class="header_right">退出</a>
 		<a id="login" th:text="${session.Sname}">登录</a>
+		<a class="header_right">你好</a>
     </div>
-    <div id="menu">
-    	<ul>
-    		<li class="menu1" onClick="page(1)">
-    			预订
-    		</li>
-    		<li class="menu1">
-    			我的会议
-    			<ul class="menu2">
-    				<li class="menu3"  onClick="page(2)">已预订会议室</li>
-    				<li class="menu3"  onClick="page(3)">未参加会议</li>
-    				<li class="menu3"  onClick="page(4)">历史会议</li>
-    			</ul>
-    		</li>
-    		<li class="menu1" onClick="page(5)">
-    			个人信息
-    			<ul class="menu2">
-    				<li class="menu3">查看个人信息</li>
-    				<li class="menu3">账号安全</li>
-    			</ul>
-    		</li>
-    		<li class="menu1">
-    			温馨服务
-    			<ul class="menu2">
-    				<li class="menu3">预订说明</li>
-    				<li class="menu3">建议及投诉</li>
-    			</ul>
-    		</li>
-    	</ul>
+	<div class="main">
+		<div id="menu">
+    		<ul>
+    			<li class="menu1"  onClick="page(1)">预订</li>
+				<li class="menu1"  onClick="page(2)">我的预定</li>
+				<li class="menu1"  onClick="page(3)">最新会议</li>
+				<li class="menu1"  onClick="page(4)">历史会议</li>
+				<li class="menu1"  onClick="page(6)">会议室预定情况</li>
+    			<li class="menu1" onClick="page(5)">个人信息</li>
+    		</ul>
     	
-    </div>
-    <div id="page">
-    	<iframe src="html/book.html" class="page1" id="frame" frameborder="0"></iframe>
-    </div>
-
+   	 	</div>
+    	<div id="page">
+    		<iframe src="html/book.html" class="page1" id="frame" frameborder="0"></iframe>
+    	</div>
+	</div>
 <script type="text/javascript">
     function page(n){
 		switch(n){
 			case 1:
-				document.getElementById("frame").src = "/html/book.html";
+				document.getElementById("frame").src = "/html/book.html";           //预定
 				break;
 			case 2:	
-				document.getElementById("frame").src = "/html/mymeeting1.html";
+				document.getElementById("frame").src = "/html/mymeeting1.html";              //个人中心
 				break;
 			case 3:	
-				document.getElementById("frame").src = "/html/mymeeting2.html";
+				document.getElementById("frame").src = "/html/mymeeting2.html";               //消息
 				break;
 			case 4:	
 				document.getElementById("frame").src = "/html/mymeeting3.html";
 				break;
 			case 5:
 				document.getElementById("frame").src = "/html/myinfo.html";
+				break;
+			case 6:
+				document.getElementById("frame").src = "/html/state2.html";
 				break;
 		}
 	}

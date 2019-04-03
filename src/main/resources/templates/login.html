@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
+    <link rel="stylesheet" href="/css/loginstyle.css" />
 </head>
 <script type="text/javascript">
     function checkParent(){
@@ -14,20 +15,24 @@
 </script>
 
 <body onload="checkParent();">
+<div class="main">
 <form th:action="@{/login/}" method="post">
     <div>
         &nbsp;
         <span style="font-size: 12px;color: red" th:text="${error}"/>
     </div>
-    <div>
-        用户名：
+    <div class="username">
+        username：
         <input name="name" type="text" placeholder="用户名"/>
     </div>
-    <div>
-        密码：
+    <div class="password">
+        password：
         <input name="password" type="password" placeholder="密码"/>
     </div>
-    <button type="submit">登录</button>
-</form>
+    <div class="rememberme">
+        remember me
+    </div>
+    <button type="submit">log in</button>
+</form></div>
 </body>
 </html>

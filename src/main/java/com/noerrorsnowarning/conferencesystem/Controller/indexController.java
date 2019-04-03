@@ -74,9 +74,14 @@ public class indexController {
         return "html/myinfo";
     }
 
-    @RequestMapping(value = "/html/state.html", method = RequestMethod.GET)
-    public String state() {
-        return "html/state.html";
+    @RequestMapping(value = "/html/state1.html", method = RequestMethod.GET)
+    public String state1() {
+        return "html/state1.html";
+    }
+
+    @RequestMapping(value = "/html/state2.html", method = RequestMethod.GET)
+    public String state2() {
+        return "html/state2.html";
     }
 
     @RequestMapping(value = "/html/addmeetingroom.html", method = RequestMethod.GET)
@@ -102,6 +107,16 @@ public class indexController {
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String login() {
         return "admin/login";
+    }
+
+    @RequestMapping(value = "/html/addmap.html",method = RequestMethod.GET)
+    public String addMap(){
+        return "html/addmap";
+    }
+
+    @RequestMapping(value = "/html/addstaff.html",method = RequestMethod.GET)
+    public String addStaff(){
+        return "html/addstaff";
     }
 
 }

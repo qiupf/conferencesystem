@@ -3,33 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <title>addmap</title>
+    <link rel="stylesheet" href="/css/addmap.css" />
 </head>
-<script>
-    function f() {
-        var box=document.getElementById(box);
-        for(var i=0;i<10;i++)
-        {
-            for(var j=0;j<10;j++)
-            {
-                var smallbox=document.createElement("label");
-                smallbox.setAttribute("id","box"+i.toString()+j.toString());
-                smallbox.innerHTML="sfefs";
-                box.appendChild(smallbox);
-            }
-        }
-    }
 
-</script>
-<body onload="f()">
-    <input type="checkbox" name="color" value="会议室">会议室</input>
-    <input type="checkbox" name="color" value="办公区域">办公区域</input>
-    <select>
-        <option>美工部</option>
-        <option>编辑部</option>
-    </select>
-    <input type="checkbox" name="color" value="墙体">墙体</input>
-<div id="box" style="width: 400px;height: 400px;background:red">
-<p>sfe</p>
-</div>
+<body>
+   <div class="top">
+    	<input type="radio" name="color" id="meetingroom" value="1">会议室</input>
+    	<input type="radio" name="color" id="office" value="2">办公区域</input>
+    	<select id="department">
+        	<option style="background-color: #acf8ff">市场部</option>
+       		<option style="background-color: #c9ffd1">研发部</option>
+			<option style="background-color: #ecffc8">生产部</option>
+			<option style="background-color: #fffbae">行政部</option>
+			<option style="background-color: #ffddd6">后勤部</option>
+    	</select>
+    	<input type="radio" name="color" id="wall" value="3" >墙体</input>
+    	<div class="top_right">
+			楼层：<select onChange="change()">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+		</select>
+    	长：<select id="length" onChange="change()">
+    		<option>5</option>
+    		<option>6</option>
+    		<option>7</option>
+    		<option>8</option>
+    		<option>9</option>
+    		<option>10</option>
+    		<option>11</option>
+    		<option>12</option>
+    		<option>13</option>
+    		<option>14</option>
+    		<option>15</option>
+    		<option>16</option>
+    		<option>17</option>
+    		<option>18</option>
+    		<option>19</option>
+    		<option>20</option>
+    	</select>
+    	宽：<select id="height" onChange="change()">
+    		<option>5</option>
+    		<option>6</option>
+    		<option>7</option>
+    		<option>8</option>
+    		<option>9</option>
+    		<option>10</option>
+    		<option>11</option>
+    		<option>12</option>
+    		<option>13</option>
+    		<option>14</option>
+    		<option>15</option>
+    		<option>16</option>
+    		<option>17</option>
+    		<option>18</option>
+    		<option>19</option>
+    		<option>20</option>
+    	</select>
+    	</div>
+    </div>
+    
+	<div id="box"></div>
+   
+    <script>
+		change();
+		
+		function changecolor(event){
+			var select = document.getElementsByName("color");
+			var selectvalue = null;
+			var smallbox = document.getElementById(event.srcElement.id);
+			if(smallbox.style.background!="white")
+			{
+				smallbox.style.background="white";
+			}else{
+				for(var i=0;i<select.length;i++)
+				{
+					if(select[i].checked==true)	
+					{
+						selectvalue=select[i].value;
+						break;
+					}
+				}
+				switch(selectvalue)
+				{
+					case "1":
+						smallbox.style.background="#ffcdf7";
+						break;
+					case "2":
+						var department = document.getElementById("department");
+						var index = department.selectedIndex;
+						switch(index)
+						{
+							case 0:
+								smallbox.style.background="#acf8ff";
+								break;
+							case 1:
+								smallbox.style.background="#c9ffd1";
+								break;
+							case 2:
+								smallbox.style.background="#ecffc8";
+								break;
+							case 3:
+								smallbox.style.background="#fffbae";
+								break;
+							case 4:
+								smallbox.style.background="#ffddd6";
+								break;
+						}
+						break;
+					case "3":
+						smallbox.style.background="#c1c1c1";
+						break;
+				}
+			}
+			
+		}
+		
+		
+		function change(){
+			var box=document.getElementById("box");
+			box.innerHTML="";
+			var length=document.getElementById("length");
+			var indexl=length.selectedIndex;
+			var lengthvalue=length.options[indexl].value;
+			box.style.width=(Number(lengthvalue)*40+2).toString()+"px";
+			var height=document.getElementById("height");
+			var indexh=height.selectedIndex;
+			var heightvalue=height.options[indexh].value;
+			box.style.height=(Number(heightvalue)*40+2).toString()+"px";
+			var br = document.createElement("br");
+			for(var j=0;j<Number(lengthvalue)-1;j++)
+			{
+				var lineh=document.createElement("div");
+				lineh.setAttribute("class","lineh");
+				box.appendChild(lineh);
+			}
+			var lineh=document.createElement("div");
+			lineh.setAttribute("class","lineh");
+			lineh.style.width="42px";
+			box.appendChild(lineh);
+			for(var i=0;i<Number(heightvalue);i++)
+			{
+				var linev=document.createElement("div");
+				linev.setAttribute("class","linev");
+				box.appendChild(linev);
+				for(var j=0;j<Number(lengthvalue);j++)
+				{
+					var smallbox=document.createElement("div");
+					var linev=document.createElement("div");
+					smallbox.setAttribute("id","box"+i.toString()+j.toString());
+					smallbox.setAttribute("class","smallbox");
+					smallbox.setAttribute("onClick","changecolor(event)");
+					linev.setAttribute("id","linev"+i.toString()+j.toString());
+					linev.setAttribute("class","linev");
+					box.appendChild(smallbox);
+					box.appendChild(linev);
+				}
+				box.appendChild(br);
+				for(var j=0;j<Number(lengthvalue)-1;j++)
+				{
+					var lineh=document.createElement("div");
+					lineh.setAttribute("id","lineh"+i.toString()+j.toString());
+					lineh.setAttribute("class","lineh");
+					box.appendChild(lineh);
+				}
+				var lineh=document.createElement("div");
+				lineh.setAttribute("class","lineh");
+				lineh.style.width="42px";
+				box.appendChild(lineh);
+				box.appendChild(br);
+			}
+		}
+    </script>
 </body>
 </html>

@@ -19,3 +19,26 @@ caption{
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.delete{
+	width: 800px;
+	text-align: center;
+	border:1px solid #707070;
+	border-collapse:collapse
+}
+
+th{
+	font-weight: lighter;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+
+tr{
+	border-bottom: 1px solid #c1c1c1;
+}
+
+td{
+	font-weight: lighter;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}

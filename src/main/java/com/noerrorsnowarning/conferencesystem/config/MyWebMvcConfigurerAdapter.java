@@ -17,6 +17,8 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
         registry.addInterceptor(new MyInterceptor())
                 .excludePathPatterns("/login/")
                 .excludePathPatterns("/static/**")
+                .excludePathPatterns("/css/**")
+                .excludePathPatterns("/img/**")
                 .excludePathPatterns("/admin/login/")
                 .addPathPatterns("/**");
 

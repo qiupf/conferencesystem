@@ -5,7 +5,6 @@ import com.noerrorsnowarning.conferencesystem.Service.EquipmentService;
 import com.noerrorsnowarning.conferencesystem.Service.StaffService;
 import com.noerrorsnowarning.conferencesystem.domain.ConferenceInfo;
 import com.noerrorsnowarning.conferencesystem.domain.Equipment;
-import com.noerrorsnowarning.conferencesystem.domain.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,16 +61,6 @@ public class indexController {
         List<ConferenceInfo> conferenceList = conferenceService.searchCon(3, user);
         model.addAttribute("ConferenceList", conferenceList);
         return "html/mymeeting3";
-    }
-
-    @RequestMapping(value = "/html/myinfo.html", method = RequestMethod.GET)
-    public String myinfo(HttpServletRequest request, Model model) {
-
-        //根据session获取用户id，并获取其信息
-        String id = (String) request.getSession().getAttribute("Sname");
-        Staff staff = staffService.queryStaffById(id);
-        model.addAttribute("info", staff);
-        return "html/myinfo";
     }
 
     @RequestMapping(value = "/html/state1.html", method = RequestMethod.GET)

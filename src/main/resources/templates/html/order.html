@@ -5,13 +5,23 @@
     <title>order</title>
 </head>
 <body>
-    <div style="border-style: solid;border-width: 1px;width: 800px;height: 30px">
-        <input hidden th:value="${conInfo.ConferenceID}" id="001_28"/>
-        会议室地址：<span id="address" th:value="${conInfo.Raddress}"/>
-        使用时间：
-        会议时长：<span></span>
-        参会人数：
-        <button>预定</button>
+    <div style="border-style: solid;border-width: 1px;width: 800px;height: 300px">
+        <form th:action="@{/sendOrder}" method="post">
+            <input hidden th:value="${conInfo.roomID}" th:name="roomID" id="001_28"/>
+            <div>
+                会议名称：<input type="text" name="conferenceName"/>
+            </div>
+            <div>
+                会议室地址：<span id="address" th:text="${conInfo.Raddress}"/>
+            </div>
+            <div>
+                使用时间：<input type="date" name="date"/><input type="time" name="startTime"/> - <input type="time" name="endTime"/>
+            </div>
+            <div>
+                参会人数：<input type="text" name="num"/>
+            </div>
+            <button>预定</button>
+        </form>
     </div>
 </body>
 </html>

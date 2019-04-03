@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Enumeration;
 
 @Controller
 @RequestMapping("/")
@@ -50,6 +51,15 @@ public class LoginController {
     //区分get和post请求
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
+        return "login";
+    }
+
+    @RequestMapping(value = "exit",method = RequestMethod.GET)
+    public String exit(HttpServletRequest request){
+        Enumeration<String>enumeration=request.getSession().getAttributeNames();
+        while(enumeration.hasMoreElements()){
+            request.getSession().removeAttribute(enumeration.nextElement());
+        }
         return "login";
     }
 

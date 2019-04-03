@@ -27,15 +27,15 @@ public class ReservedServiceImpl implements ReservedService {
     public List<Reserved> getReserved(String id) {
 
         //设置时间格式
-        SimpleDateFormat nowtime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String now = nowtime.format(new Date());
+//        SimpleDateFormat nowtime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String now = nowtime.format(new Date());
+//
+//        //判断是否是admin查询，admin查询查询所有
+//        if (id.equals("admin")) {
+//            id = "%";
+//        }
 
-        //判断是否是admin查询，admin查询查询所有
-        if (id.equals("admin")) {
-            id = "%";
-        }
-
-        List<Reserved> reservedList = reservedMapper.getReserved(id, now);
+        List<Reserved> reservedList = reservedMapper.getReserved(id);
 
         return reservedList;
     }
@@ -83,7 +83,7 @@ public class ReservedServiceImpl implements ReservedService {
         signTime = temp.append(signTime).toString();
 
 
-        int result = reservedMapper.update(conferenceID, name, MSID, startTime, endTime, signTime);
+        int result = reservedMapper.update(conferenceID, name, startTime, endTime, signTime);
 
         return result;
     }

@@ -5,9 +5,11 @@ import com.noerrorsnowarning.conferencesystem.dao.ConferenceMapper;
 import com.noerrorsnowarning.conferencesystem.dao.GuestConMapper;
 import com.noerrorsnowarning.conferencesystem.dao.RoomMapper;
 import com.noerrorsnowarning.conferencesystem.domain.ConferenceInfo;
+import com.noerrorsnowarning.conferencesystem.domain.Reserved;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -45,15 +47,20 @@ public class ConferenceServiceImpl implements ConferenceService {
             conferenceList.addAll(conferenceMapper.pastConBySID(time, user));
         }
 
-        for (int i = 0; i < conferenceList.size(); ++i) {
-            ConferenceInfo info = conferenceList.get(i);
-
-            //获取外宾数量
-            info.setNumGuest(guestConMapper.numByGuestCon(info.getConferenceID()));
-
-            //根据是否有签到时间获取是否签到
-            info.setSign(info.getSigntime() == null ? "否" : "是");
+        for(int i=0;i<conferenceList.size();++i){
+            ConferenceInfo info=conferenceList.get(i);
+            info.setTime(info.getStarttime()+"-"+info.getCendtime());
         }
+
+//        for (int i = 0; i < conferenceList.size(); ++i) {
+//            ConferenceInfo info = conferenceList.get(i);
+//
+//            //获取外宾数量
+//            info.setNumGuest(guestConMapper.numByGuestCon(info.getConferenceID()));
+//
+//            //根据是否有签到时间获取是否签到
+//            info.setSign(info.getSigntime() == null ? "否" : "是");
+//        }
 
         return conferenceList;
     }
@@ -61,9 +68,27 @@ public class ConferenceServiceImpl implements ConferenceService {
     @Override
     public ConferenceInfo getCon(String roomID,String user) {
         String address=roomMapper.findRaddressByRoomID(roomID);
-        String MSID=user;
-        ConferenceInfo conferenceInfo=new ConferenceInfo(address,MSID);
+        String RSID=user;
+        ConferenceInfo conferenceInfo=new ConferenceInfo(address,RSID);
         return conferenceInfo;
+    }
+
+    @Override
+    public int insertConference(HttpServletRequest request) {
+
+        String roomID=request.getParameter("roomID");
+        String conferenceName=request.getParameter("conferenceName");
+        String RSID= (String) request.getSession().getAttribute("Sname");
+        String date=request.getParameter("date");
+        String start=request.getParameter("startTime");
+        String end=request.getParameter("endTime");
+        String startString=date+" "+start;
+        String endString=date+" "+end;
+        int Cnum=Integer.valueOf(request.getParameter("num"));
+        Reserved reserved=new Reserved(roomID,RSID,startString,endString,conferenceName,Cnum);
+        conferenceMapper.insertReserved(reserved);
+
+        return 0;
     }
 
 }

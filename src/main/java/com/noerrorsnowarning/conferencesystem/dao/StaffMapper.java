@@ -4,6 +4,7 @@ import com.noerrorsnowarning.conferencesystem.domain.Staff;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,5 +18,8 @@ public interface StaffMapper {
     //根据用户id获取用户信息
     @Select("select * from Staff where StaffID = #{StaffID}")
     Staff queryStaffById(@Param("StaffID") String id);
+
+    @Update("update Staff set Smobilenum = #{num} where StaffID = #{ID}")
+    int update(@Param("ID")String ID,@Param("num")String number);
 
 }

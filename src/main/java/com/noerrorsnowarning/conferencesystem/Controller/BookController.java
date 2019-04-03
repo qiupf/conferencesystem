@@ -35,17 +35,7 @@ public class BookController {
 
     @RequestMapping(value = "/html/book.html", method = RequestMethod.GET)
     public String book(Model model) {
-
-        //获取所有会议室及设备信息
-        List<Room> roomList = roomService.getRoom();
-        List<Equipment> equipmentList = equipmentService.getEquips();
-
-        model.addAttribute("equipList", equipmentList);
-
-        roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
-
-        model.addAttribute("roomList", roomList);
-
+        model=setModel(model);
         return "html/book";
     }
 
@@ -56,8 +46,7 @@ public class BookController {
         String roomID = request.getParameter("RoomID");
         String user = (String) request.getSession().getAttribute("Sname");
         ConferenceInfo conferenceInfo=conferenceService.getCon(roomID,user);
-        conferenceInfo.setConferenceID(25);
-        System.out.println(conferenceInfo.getRaddress());
+        conferenceInfo.setRoomID(roomID);
         model.addAttribute("conInfo",conferenceInfo);
         return "html/order";
     }
@@ -116,6 +105,18 @@ public class BookController {
 
     @RequestMapping(value = "/html/bookadmin.html", method = RequestMethod.GET)
     public String bookadmin(Model model) {
+        model=setModel(model);
+        return "html/bookadmin";
+    }
+
+    @RequestMapping(value = "/sendOrder",method = RequestMethod.POST)
+    public String sendOrder(HttpServletRequest request){
+        conferenceService.insertConference(request);
+        return "html/book";
+    }
+
+    private Model setModel(Model model){
+
         List<Room> roomList = roomService.getRoom();
         List<Equipment> equipmentList = equipmentService.getEquips();
 
@@ -124,22 +125,8 @@ public class BookController {
         roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
 
         model.addAttribute("roomList", roomList);
-//        model=setModel(model);
-        return "html/bookadmin";
-    }
+        return model;
 
-//    private Model setModel(Model model){
-//
-//        List<Room> roomList = roomService.getRoom();
-//        List<Equipment> equipmentList = equipmentService.getEquips();
-//
-//        model.addAttribute("equipList", equipmentList);
-//
-//        roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
-//
-//        model.addAttribute("roomList", roomList);
-//        return model;
-//
-//    }
+    }
 
 }

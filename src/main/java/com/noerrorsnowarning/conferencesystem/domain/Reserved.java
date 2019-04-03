@@ -15,17 +15,22 @@ public class Reserved {
     private String equip;
     private String RSID;
     private String Cname;
-    private String MSID;
     private int Cnum;
     private int numGuest;
     private Time Signtime;
     private String sign;
-    private String dateString;
+    private String startString;
+    private String endString;
 
-    public Reserved(String roomID,String RSID,String dateString){
-        this.RoomID=roomID;
+    public Reserved(){}
+
+    public Reserved(String RoomID,String RSID,String startString,String endString,String Cname,int Cnum){
+        this.RoomID=RoomID;
         this.RSID=RSID;
-        this.dateString=dateString;
+        this.startString=startString;
+        this.endString=endString;
+        this.Cname=Cname;
+        this.Cnum=Cnum;
     }
 
     public String getRoomID() {
@@ -100,14 +105,6 @@ public class Reserved {
         Cname = cname;
     }
 
-    public String getMSID() {
-        return MSID;
-    }
-
-    public void setMSID(String MSID) {
-        this.MSID = MSID;
-    }
-
     public int getCnum() {
         return Cnum;
     }
@@ -140,19 +137,27 @@ public class Reserved {
         this.sign = sign;
     }
 
-    public String getDateString() {
-        return dateString;
-    }
-
-    public void setDateString(String dateString) {
-        this.dateString = dateString;
-    }
-
     public int getConferenceID() {
         return ConferenceID;
     }
 
     public void setConferenceID(int conferenceID) {
         ConferenceID = conferenceID;
+    }
+
+    public String getStartString() {
+        return startString;
+    }
+
+    public void setStartString(String startString) {
+        this.startString = startString;
+    }
+
+    public String getEndString() {
+        return endString;
+    }
+
+    public void setEndString(String endString) {
+        this.endString = endString;
     }
 }

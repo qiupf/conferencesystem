@@ -7,65 +7,24 @@
 </head>
 
 <body>
-<!---
-<table class="title">
+<table class="delete">
 		<caption>未参加会议</caption>
 		<tr>
-			<th>会议编号</th>
-			<th>会议室地址</th>
-			<th>会议日期</th>
+			<th>日期</th>
+			<th>时间</th>
+			<th>会议室</th>
+			<th>地址</th>
+			<th>主题</th>
 			<th>申请人</th>
-			<th>会议名称</th>
-			<th>主会人</th>
-			<th>会议开始时间</th>
-			<th>会议结束时间</th>
-			<th>参会人数</th>
-			<th>外宾人数</th>
-			<th>是否签到</th>
-			<th>签到开始时间</th>
 		</tr>
 		<tr th:each="conference : ${ConferenceList}">
-			<td th:text="${conference.ConferenID}"/>
-			<td th:text="${conference.Raddress}"/>
 			<td th:text="${conference.Cstarttime}"/>
-			<td th:text="${conference.RSID}"/>
+			<td th:text="${conference.time}"/>
+			<td th:text="${conference.RoomID}"/>
+			<td th:text="${conference.Raddress}"/>
 			<td th:text="${conference.Cname}"/>
 			<td th:text="${conference.RSID}"/>
-			<td th:text="${conference.starttime}"/>
-			<td th:text="${conference.Cendtime}"/>
-			<td th:text="${conference.Cnum}"/>
-			<td th:text="${conference.numGuest}"/>
-			<td th:text="${conference.sign}"/>
-			<td th:text="${conference.Signtime}"/>
-	</tr>
+		</tr>
 	</table>
-	//读取数据即可。不需要修改--->
-
-<table class="delete">
-	<tr>
-		<th>日期</th>
-		<th>时间</th>
-		<th>会议室</th>
-		<th>地址</th>
-		<th>主题</th>
-		<th>主会人</th>
-	</tr>
-	<tr id="001">
-		<td id="001_1">2019.02.11</td>
-		<td id="001_2">9:00-10:00</td>
-		<td id="001_3">会议室101</td>
-		<td id="001_4">广b101</td>
-		<td id="001_5">市场评估会</td>
-		<td id="001_6">张三丰</td>
-	</tr>
-	<tr>
-		<td>2019.02.15</td>
-		<td>9:00-10:00</td>
-		<td>会议室105</td>
-		<td>广b105</td>
-		<td>市场评估会</td>
-		<td>李四</td>
-	</tr>
-</table>
 </body>
 </html>

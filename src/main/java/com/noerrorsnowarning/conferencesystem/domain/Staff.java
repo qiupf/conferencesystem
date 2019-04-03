@@ -7,7 +7,7 @@ public class Staff {
     private String Sname;
     private String Ssex;
     private int Sage;
-    private String mobilenum;
+    private String Smobilenum;
     private String Sdept;
     private String Spost;
     private String faceFeature;
@@ -52,14 +52,6 @@ public class Staff {
         Sage = sage;
     }
 
-    public String getMobilenum() {
-        return mobilenum;
-    }
-
-    public void setMobilenum(String mobilenum) {
-        this.mobilenum = mobilenum;
-    }
-
     public String getSdept() {
         return Sdept;
     }
@@ -82,6 +74,14 @@ public class Staff {
 
     public void setFaceFeature(String faceFeature) {
         this.faceFeature = faceFeature;
+    }
+
+    public String getSmobilenum() {
+        return Smobilenum;
+    }
+
+    public void setSmobilenum(String smobilenum) {
+        Smobilenum = smobilenum;
     }
 }
 

@@ -11,17 +11,18 @@ public class ConferenceInfo {
     private Time starttime;
     private Time Cendtime;
     private String RSID;
-    private String MSID;
     private String Cname;
     private int Cnum;
     private Time Signtime;
     private String state;
     private int numGuest;
     private String sign;
+    private String roomID;
+    private String time;
 
-    public ConferenceInfo(String Raddress, String MSID){
+    public ConferenceInfo(String Raddress, String RSID){
         this.Raddress=Raddress;
-        this.MSID=MSID;
+        this.RSID=RSID;
     }
 
     public String getCname() {
@@ -120,11 +121,19 @@ public class ConferenceInfo {
         ConferenceID = conferenceID;
     }
 
-    public String getMSID() {
-        return MSID;
+    public String getRoomID() {
+        return roomID;
     }
 
-    public void setMSID(String MSID) {
-        this.MSID = MSID;
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

@@ -6,6 +6,8 @@ import com.noerrorsnowarning.conferencesystem.domain.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Service
 public class StaffServiceImpl implements StaffService {
 
@@ -40,5 +42,14 @@ public class StaffServiceImpl implements StaffService {
         }
 
         return result;
+    }
+
+    @Override
+    public int update(HttpServletRequest request) {
+
+        String number=request.getParameter("num");
+        String ID= (String) request.getSession().getAttribute("Sname");
+
+        return staffMapper.update(ID,number);
     }
 }

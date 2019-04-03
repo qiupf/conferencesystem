@@ -6,19 +6,16 @@
 </head>
 	
 <body>
-	<img src="/img/myinfo.jpg" width="800px">
-	<!---
+	<!--<img src="/img/myinfo.jpg" width="800px">-->
 	<ul>
-		<li>姓名：<span th:text="${info.Sname}"/></li>
-		<li>工号：<span th:text="${info.StaffID}"/></li>
-		<li>性别：<span th:text="${info.Ssex}"/></li>
-		<li>职位：<span th:text="${info.Spost}"/></li>
-		<li>工龄：</li>
-		<li>手机号码：xxxxxxxx</li>
-		<li>邮箱地址：xxxxxxxx</li>
-		<li>微信号:xxx</li>
-		//以上信息直接由管理员从人事部获得，不可更改
+		<form th:action="@{/updateMobilePhone}" method="post">
+			<li>姓名：<span th:text="${info.Sname}"/></li>
+			<li>工号：<span th:text="${info.StaffID}"/></li>
+			<li>性别：<span th:text="${info.Ssex}"/></li>
+			<li>职位：<span th:text="${info.Spost}"/></li>
+			<li>手机号:<input th:type="text" th:value="${info.Smobilenum}" name="num"/></li>
+			<button>修改</button>
+		</form>
 	</ul>
-	--->
 </body>
 </html>

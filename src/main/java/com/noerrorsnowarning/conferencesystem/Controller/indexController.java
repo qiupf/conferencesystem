@@ -49,6 +49,7 @@ public class indexController {
         //获取未参加的会议
         List<ConferenceInfo> conferenceList = conferenceService.searchCon(2, user);
         model.addAttribute("ConferenceList", conferenceList);
+        System.out.println(conferenceList.get(0).getRoomID());
         return "html/mymeeting2";
     }
 

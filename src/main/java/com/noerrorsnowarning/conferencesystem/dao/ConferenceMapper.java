@@ -12,7 +12,7 @@ import java.util.List;
 public interface ConferenceMapper {
 
     //根据用户id返回未参加的会议
-    @Select("select c.ConferenceID, r.Raddress, c.Cstarttime, c.Cstarttime as starttime, " +
+    @Select("select c.ConferenceID, r.Raddress, c.RoomID, c.Cstarttime, c.Cstarttime as starttime, " +
             "c.Cendtime, c.RSID, c.Cname, c.Cnum, c.Signtime, cs.state " +
             "from Conference c, Room r, Staff s, ConferenceSign cs " +
             "where c.RoomID = r.RoomID " +
@@ -23,7 +23,7 @@ public interface ConferenceMapper {
     List<ConferenceInfo> funConBySID(@Param("now") String now,@Param("SID")String sid);
 
     //根据用户名返回已经参加的会议
-    @Select("select r.Raddress, r.RoomID, c.Cstarttime, c.Cstarttime as starttime, " +
+    @Select("select r.Raddress, r.RoomID, c.RoomID, c.Cstarttime, c.Cstarttime as starttime, " +
             "c.Cendtime, c.RSID, c.Cname, cs.state " +
             "from Conference c, Room r, Staff s, ConferenceSign cs " +
             "where c.RoomID = r.RoomID " +

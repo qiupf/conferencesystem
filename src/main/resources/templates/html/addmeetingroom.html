@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<table class="delete">
+<!--<table class="delete">
     <tr>
         <th>编号</th>
         <th>名称</th>
@@ -71,7 +71,7 @@
         <td>8:00-20:00</td>
         <td>无</td>
     </tr>
-</table>
+</table> -->
 <!---
 <div style="text-align: left">
 	<span style="font-size: 12px;color: red" th:text="${message}"/>
@@ -93,7 +93,27 @@
 	</form>
 </div>
 --->
-<button style="float:right;margin-right: 190px;margin-top: 15px;padding-bottom: 5px;padding-top: 5px;cursor: pointer" onclick="add()">添加</button>
+<table class="delete" width="100%">
+        <tr>
+            <th class="th1">会议室编号</th>
+            <th class="th2">会议室地址</th>
+            <th class="th3">空闲时间段</th>
+            <th class="th4">容量</th>
+            <th class="th5">设备</th>
+        </tr>
+
+        <tr th:each="room : ${roomList}">
+            <td th:text="${room.RoomID}"/>
+            <td th:text="${room.Raddress}"/>
+            <td>08:00-22:00</td>
+            <td th:text="${room.Rcapacity}"/>
+            <td th:text="${room.equips}"/>
+        </tr>
+
+    </table>
+<form th:action="@{/html/add1}" method="post">
+<button style="float:right;margin-right: 190px;margin-top: 15px;padding-bottom: 5px;padding-top: 5px;cursor: pointer" >添加</button>
+</form>
 <button style="float:right;margin-top: 15px;padding-bottom: 5px;padding-top: 5px;cursor: pointer">修改</button>
 
 <script type="text/javascript">

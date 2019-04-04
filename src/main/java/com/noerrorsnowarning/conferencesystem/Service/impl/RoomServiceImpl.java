@@ -29,9 +29,9 @@ public class RoomServiceImpl implements RoomService {
         Room room = getParameter(request);
 
         //插入设备值
-        StringBuilder s=new StringBuilder();
-        int n=0;
-        for(int i=0;i<numEquip;++i) {
+        StringBuilder s = new StringBuilder();
+        int n = 0;
+        for (int i = 0; i < numEquip; ++i) {
             if (n < equip.length && equip[n].charAt(0) - '1' == i) {
                 s.append("1");
                 n++;
@@ -54,50 +54,58 @@ public class RoomServiceImpl implements RoomService {
     public List<Room> findRoomByIdOrAddress(String id, String address) {
 
         //要用equals判断，不能用null来判断
-        id=id.equals("")?"%":id;
-        address=address.equals("")?"%":address;
+        id = id.equals("") ? "%" : id;
+        address = address.equals("") ? "%" : address;
 
-        List<Room>roomList=roomMapper.findRoomByIdOrAddress(id,address);
+        List<Room> roomList = roomMapper.findRoomByIdOrAddress(id, address);
 
         return roomList;
     }
 
     @Override
-    public List<Room> findRoomEquipByOther(String startTime, String endTime, String num,String[] equip,int numEquip) {
+    public List<Room> findRoomEquipByOther(String startTime, String endTime, String num, String[] equip, int numEquip) {
 
-        if(startTime.equals("")){
-            startTime="24:00";
-        }if(endTime.equals("")){
-            endTime="00:00";
-        }if(num.equals("")){
-            num="0";
+        if (startTime.equals("")) {
+            startTime = "24:00";
         }
-        startTime=startTime+":00";
-        endTime=endTime+":00";
+        if (endTime.equals("")) {
+            endTime = "00:00";
+        }
+        if (num.equals("")) {
+            num = "0";
+        }
+        startTime = startTime + ":00";
+        endTime = endTime + ":00";
 
-        StringBuilder s=new StringBuilder();
+        StringBuilder s = new StringBuilder();
 
         //通过正则表达式来判断设备
-        if(equip==null||equip.length==0){
+        if (equip == null || equip.length == 0) {
             s.append(".");
-        }else {
-            int n=0;
-            for(int i=0;i<numEquip;++i) {
-                if(n<equip.length) {
+        } else {
+            int n = 0;
+            for (int i = 0; i < numEquip; ++i) {
+                if (n < equip.length) {
                     if (i == equip[n].charAt(0) - '1') {
                         s.append("[^0]");
                         n++;
                     } else {
                         s.append(".");
                     }
-                }else {
+                } else {
                     s.append(".");
                 }
             }
         }
 
-        List<Room>roomList=roomMapper.findRoomByOhter(startTime,endTime,num,s.toString());
+        List<Room> roomList = roomMapper.findRoomByOhter(startTime, endTime, num, s.toString());
         return roomList;
+    }
+
+    @Override
+    public int addRoom(String id, String name, String num, String equip) {
+        int n = Integer.valueOf(num);
+        return roomMapper.addRoom(id, name, n, equip);
     }
 
     private Room getParameter(HttpServletRequest request) throws ParseException {

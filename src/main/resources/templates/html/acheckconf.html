@@ -28,9 +28,9 @@
         <td id="001_3" th:text="${meeting.Raddress}"/>
         <td id="001_9" th:text="${meeting.Cname}"/>
         <td id="001_8" th:text="${meeting.RSID}"/>
-        <td>成功</td>
-        <td><a href="#">批准</a></td>
-        <td><a href="#">拒绝</a></td>
+        <td th:text="${meeting.Cstate}"></td>
+        <td><a th:href="${meeting.accepturl}">批准</a></td>
+        <td><a th:href="${meeting.refuseurl}">拒绝</a></td>
     </tr>
 </table>
 <br>

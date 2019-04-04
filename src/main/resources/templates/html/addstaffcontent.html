@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>order</title>
 </head>
 <body>
-
+<div style="border-style: solid;border-width: 1px;width: 800px;height: 300px">
+    <!--<form th:action="@{/sendOrder}" method="post">-->
+        <div>
+            员工名：<input type="text" name="conferenceName"/>
+        </div>
+        <!--<div>
+            会议室地址：<span id="address" th:text="${conInfo.Raddress}"/>
+        </div>
+        <div>
+            编号：<input type="date" name="date"/><input type="time" name="startTime"/> - <input type="time" name="endTime"/>
+        </div>
+        <div>
+            参会人数：<input type="text" name="num"/>
+        </div>
+        <button>预定</button>
+    </form>-->
+</div>
 </body>
 </html>

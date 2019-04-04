@@ -28,11 +28,13 @@ public class BookController {
     BookController(RoomService roomService,
                    EquipmentService equipmentService,
                    RoomAndEquipService roomAndEquipService,
-                   ConferenceService conferenceService) {
+                   ConferenceService conferenceService,
+                   ReservedService reservedService) {
         this.roomService = roomService;
         this.equipmentService = equipmentService;
         this.roomAndEquipService = roomAndEquipService;
         this.conferenceService = conferenceService;
+        this.reservedService = reservedService;
     }
 
     @RequestMapping(value = "/html/book.html", method = RequestMethod.GET)
@@ -112,18 +114,20 @@ public class BookController {
     }
 
     @RequestMapping(value = "/sendOrder", method = RequestMethod.POST)
-    public String sendOrder(HttpServletRequest request) {
+    public String sendOrder(HttpServletRequest request,Model model) {
         conferenceService.insertConference(request);
+        setModel(model);
         return "html/book";
     }
 
-    @RequestMapping(value = "/cancel", method = RequestMethod.GET)
+    @RequestMapping(value = "/html/cancel", method = RequestMethod.GET)
     public String cancel(Model model, HttpServletRequest request) {
+        String meetingID=request.getParameter("meetingID");
+        reservedService.delete(meetingID);
         String id = (String) request.getSession().getAttribute("Sname");
-        reservedService.delete("Sname");
         List<Reserved> meetingList = reservedService.getReserved(id);
         model.addAttribute("meetingList", meetingList);
-        return "html/mymeeting1";
+        return "redirect:/html/mymeeting1.html";
 
     }
 

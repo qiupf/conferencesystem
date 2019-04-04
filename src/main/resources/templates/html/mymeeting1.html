@@ -27,8 +27,8 @@
         <td id="001_3" th:text="${meeting.Raddress}"/>
         <td id="001_9" th:text="${meeting.Cname}"/>
         <td id="001_8" th:text="${meeting.RSID}"/>
-        <td>成功</td>
-        <td><a href="cancel">撤销</a></td>
+        <td th:text="${meeting.Cstate}"></td>
+        <td><a th:href="${meeting.url}">撤销</a></td>
     </tr>
 </table>
 <br>

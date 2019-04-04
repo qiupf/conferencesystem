@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 
 @Controller
 @RequestMapping("/")
@@ -40,6 +41,18 @@ public class AddGuestController {
         }
 
         return "html/addguest.html";
+    }
+
+    @RequestMapping(value = "/add2", method = RequestMethod.POST)
+    @Access(auths = {"admin"})
+    public String add2(HttpServletRequest request, Model model) {
+
+        return "redirect:/html/addstaffcontent.html";
+    }
+
+    @RequestMapping(value = "/html/addstaffcontent.html",method = RequestMethod.GET)
+    public String bb(){
+        return "html/addstaffcontent.html";
     }
 
 }

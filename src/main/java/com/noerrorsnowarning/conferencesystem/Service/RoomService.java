@@ -16,4 +16,6 @@ public interface RoomService {
 
     List<Room> findRoomEquipByOther(String startTime, String endTime, String num,String[] equip,int numEquip);
 
+    int addRoom(String id,String name,String num,String equip);
+
 }

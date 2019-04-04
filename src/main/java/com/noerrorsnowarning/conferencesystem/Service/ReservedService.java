@@ -7,12 +7,16 @@ import java.util.List;
 
 public interface ReservedService {
 
-    List<Reserved>getReserved(String id);
+    List<Reserved> getReserved(String id);
 
-    List<Reserved>getAll();
+    List<Reserved> getAll();
 
     int updateReserved(HttpServletRequest request);
 
     int delete(String id);
+
+    int refuse(String id);
+
+    int accept(String id);
 
 }

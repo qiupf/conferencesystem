@@ -20,24 +20,24 @@ public interface ConferenceMapper {
             "and c.conferenceID = cs.CID " +
             "and c.Cstarttime > #{now} " +
             "and cs.SID = s.StaffID")
-    List<ConferenceInfo> funConBySID(@Param("now") String now,@Param("SID")String sid);
+    List<ConferenceInfo> funConBySID(@Param("now") String now, @Param("SID") String sid);
 
     //根据用户名返回已经参加的会议
     @Select("select r.Raddress, r.RoomID, c.RoomID, c.Cstarttime, c.Cstarttime as starttime, " +
-            "c.Cendtime, c.RSID, c.Cname, cs.state " +
+            "c.Cendtime, c.RSID, c.Cname,c.Cstate ,cs.state " +
             "from Conference c, Room r, Staff s, ConferenceSign cs " +
             "where c.RoomID = r.RoomID " +
             "and cs.SID = #{SID}  " +
             "and c.conferenceID = cs.CID " +
             "and c.Cstarttime < #{now} " +
             "and cs.SID = s.StaffID")
-    List<ConferenceInfo> pastConBySID(@Param("now") String now,@Param("SID")String sid);
+    List<ConferenceInfo> pastConBySID(@Param("now") String now, @Param("SID") String sid);
 
     @Insert("insert into " +
-            "Conference(RoomID, RSID, Cstarttime, Cendtime, Cname, Cnum) " +
+            "Conference(RoomID, RSID, Cstarttime, Cendtime, Cname, Cnum, Cstate) " +
             "values " +
-            "(#{RoomID}, #{RSID}, #{startString}, #{endString}, #{Cname}, #{Cnum})")
-    @Options(useGeneratedKeys = true,keyProperty = "ConferenceID",keyColumn = "ConferenceID")
+            "(#{RoomID}, #{RSID}, #{startString}, #{endString}, #{Cname}, #{Cnum}, '预定')")
+    @Options(useGeneratedKeys = true, keyProperty = "ConferenceID", keyColumn = "ConferenceID")
     int insertReserved(Reserved reserved);
 
 }

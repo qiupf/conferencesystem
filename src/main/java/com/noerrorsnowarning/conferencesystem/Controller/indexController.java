@@ -1,10 +1,9 @@
 package com.noerrorsnowarning.conferencesystem.Controller;
 
-import com.noerrorsnowarning.conferencesystem.Service.ConferenceService;
-import com.noerrorsnowarning.conferencesystem.Service.EquipmentService;
-import com.noerrorsnowarning.conferencesystem.Service.StaffService;
+import com.noerrorsnowarning.conferencesystem.Service.*;
 import com.noerrorsnowarning.conferencesystem.domain.ConferenceInfo;
 import com.noerrorsnowarning.conferencesystem.domain.Equipment;
+import com.noerrorsnowarning.conferencesystem.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +20,20 @@ public class indexController {
     private ConferenceService conferenceService;
     private StaffService staffService;
     private EquipmentService equipmentService;
+    private RoomService roomService;
+    private RoomAndEquipService roomAndEquipService;
 
     @Autowired
     indexController(ConferenceService conferenceService,
                     StaffService staffService,
-                    EquipmentService equipmentService) {
+                    EquipmentService equipmentService,
+                    RoomService roomService,
+                    RoomAndEquipService roomAndEquipService) {
         this.conferenceService = conferenceService;
         this.staffService = staffService;
         this.equipmentService = equipmentService;
+        this.roomService = roomService;
+        this.roomAndEquipService = roomAndEquipService;
     }
 
     @RequestMapping(value = "index.html", method = RequestMethod.GET)
@@ -78,9 +83,16 @@ public class indexController {
     public String addMeetingRoom(Model model) {
 
         //获取设备信息显示到前端
-        List<Equipment> equipList = equipmentService.getEquips();
+        /*List<Equipment> equipList = equipmentService.getEquips();
         model.addAttribute("equipList", equipList);
 
+        return "html/addmeetingroom.html";*/
+        List<Room> roomList = roomService.getRoom();
+        List<Equipment> equipmentList = equipmentService.getEquips();
+        model.addAttribute("equipList", equipmentList);
+
+        roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
+        model.addAttribute("roomList", roomList);
         return "html/addmeetingroom.html";
     }
 
@@ -99,13 +111,13 @@ public class indexController {
         return "admin/login";
     }
 
-    @RequestMapping(value = "/html/addmap.html",method = RequestMethod.GET)
-    public String addMap(){
+    @RequestMapping(value = "/html/addmap.html", method = RequestMethod.GET)
+    public String addMap() {
         return "html/addmap";
     }
 
-    @RequestMapping(value = "/html/addstaff.html",method = RequestMethod.GET)
-    public String addStaff(){
+    @RequestMapping(value = "/html/addstaff.html", method = RequestMethod.GET)
+    public String addStaff() {
         return "html/addstaff";
     }
 

@@ -21,6 +21,10 @@ public class Reserved {
     private String sign;
     private String startString;
     private String endString;
+    private String url;
+    private String Cstate;
+    private String refuseurl;
+    private String accepturl;
 
     public Reserved(){}
 
@@ -159,5 +163,37 @@ public class Reserved {
 
     public void setEndString(String endString) {
         this.endString = endString;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getCstate() {
+        return Cstate;
+    }
+
+    public void setCstate(String cstate) {
+        Cstate = cstate;
+    }
+
+    public String getRefuseurl() {
+        return refuseurl;
+    }
+
+    public void setRefuseurl(String refuseurl) {
+        this.refuseurl = refuseurl;
+    }
+
+    public String getAccepturl() {
+        return accepturl;
+    }
+
+    public void setAccepturl(String accepturl) {
+        this.accepturl = accepturl;
     }
 }

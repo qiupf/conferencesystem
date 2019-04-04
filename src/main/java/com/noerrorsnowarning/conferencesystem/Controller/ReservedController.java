@@ -24,15 +24,12 @@ public class ReservedController {
 
     @RequestMapping(value = "/html/mymeeting1.html", method = RequestMethod.GET)
     public String mymeetingHtml(Model model, HttpServletRequest request) {
+        return getMeeting(request, model);
+    }
 
-        String id = (String) request.getSession().getAttribute("Sname");
-
-        //返回已预定会议室
-        List<Reserved> meetingList = reservedService.getReserved(id);
-
-        model.addAttribute("meetingList", meetingList);
-
-        return "html/mymeeting1";
+    @RequestMapping(value = "/html/mymeeting1", method = RequestMethod.GET)
+    public String myMeeting1(HttpServletRequest request, Model model) {
+        return getMeeting(request, model);
     }
 
     @RequestMapping(value = "/html/acheckconf.html", method = RequestMethod.GET)
@@ -40,6 +37,11 @@ public class ReservedController {
 
         //返回已预定会议室
         List<Reserved> allMeetinfList = reservedService.getAll();
+
+        for (int i = 0; i < allMeetinfList.size(); ++i) {
+            allMeetinfList.get(i).setRefuseurl("refuse?meetingID=" + allMeetinfList.get(i).getConferenceID());
+            allMeetinfList.get(i).setAccepturl("accept?meetingID=" + allMeetinfList.get(i).getConferenceID());
+        }
 
         model.addAttribute("allMeetingList", allMeetinfList);
 
@@ -54,6 +56,20 @@ public class ReservedController {
         String url = mymeetingHtml(model, request);
 
         return url;
+    }
+
+    private String getMeeting(HttpServletRequest request, Model model) {
+        String id = (String) request.getSession().getAttribute("Sname");
+
+        //返回已预定会议室
+        List<Reserved> meetingList = reservedService.getReserved(id);
+
+        for (int i = 0; i < meetingList.size(); ++i) {
+            meetingList.get(i).setUrl("cancel?meetingID=" + meetingList.get(i).getConferenceID());
+        }
+
+        model.addAttribute("meetingList", meetingList);
+        return "html/mymeeting1";
     }
 
 }

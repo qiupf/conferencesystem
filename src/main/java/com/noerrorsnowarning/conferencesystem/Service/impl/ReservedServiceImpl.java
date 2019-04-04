@@ -98,4 +98,14 @@ public class ReservedServiceImpl implements ReservedService {
         return reservedMapper.delete(id);
     }
 
+    @Override
+    public int refuse(String id) {
+        return reservedMapper.refuse(id);
+    }
+
+    @Override
+    public int accept(String id) {
+        return reservedMapper.accept(id);
+    }
+
 }

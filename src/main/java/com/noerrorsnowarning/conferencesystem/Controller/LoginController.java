@@ -56,9 +56,13 @@ public class LoginController {
 
     @RequestMapping(value = "exit",method = RequestMethod.GET)
     public String exit(HttpServletRequest request){
-        Enumeration<String>enumeration=request.getSession().getAttributeNames();
+       /* Enumeration<String>enumeration=request.getSession().getAttributeNames();
         while(enumeration.hasMoreElements()){
             request.getSession().removeAttribute(enumeration.nextElement());
+        }*/
+        String name= (String) request.getSession().getAttribute("Sname");
+        if(name!=null){
+            request.getSession().removeAttribute("Sname");
         }
         return "login";
     }

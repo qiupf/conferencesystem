@@ -9,6 +9,10 @@ public interface ReservedService {
 
     List<Reserved>getReserved(String id);
 
+    List<Reserved>getAll();
+
     int updateReserved(HttpServletRequest request);
+
+    int delete(String id);
 
 }

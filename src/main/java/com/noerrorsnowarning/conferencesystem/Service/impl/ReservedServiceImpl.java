@@ -40,6 +40,11 @@ public class ReservedServiceImpl implements ReservedService {
         return reservedList;
     }
 
+    @Override
+    public List<Reserved> getAll() {
+        return reservedMapper.getAll();
+    }
+
 //    @Override
 //    public int insertReserved(String roomId, String user) {
 //
@@ -86,6 +91,11 @@ public class ReservedServiceImpl implements ReservedService {
         int result = reservedMapper.update(conferenceID, name, startTime, endTime, signTime);
 
         return result;
+    }
+
+    @Override
+    public int delete(String id) {
+        return reservedMapper.delete(id);
     }
 
 }

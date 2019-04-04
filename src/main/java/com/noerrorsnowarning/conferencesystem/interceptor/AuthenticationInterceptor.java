@@ -34,6 +34,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
                 }
 
                 String role = (String) request.getSession().getAttribute("Sname");
+                //String Arole = (String) request.getSession().getAttribute("Aname");
                 if (authSet.contains(role)) {
                     return true;
                 }

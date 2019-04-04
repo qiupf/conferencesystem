@@ -9,7 +9,7 @@
 <body>
 <img src="/img/background2.png"/>
 <div class="header">
-    <strong><a class="title" href="index.html">智能会议室管理系统（管理员端）</a></strong>
+    <strong><a class="title" href="index.html">智能会议室管理系统 (管理员端)</a></strong>
     <a class="header_right" style="margin-right: 20px" th:text="${session.Sname}"/>
 </div>
 <div class="main">
@@ -37,7 +37,7 @@
 
     </div>
     <div id="page">
-        <iframe src="/html/mymeeting1.html" class="page1" id="frame" frameborder="0"></iframe>
+        <iframe src="/html/acheckconf.html" class="page1" id="frame" frameborder="0"></iframe>
     </div>
 </div>
 <script type="text/javascript">
@@ -50,7 +50,7 @@
                 document.getElementById("frame").src = "/html/bookadmin.html";
                 break;
             case 3:
-                document.getElementById("frame").src = "/html/mymeeting1.html";
+                document.getElementById("frame").src = "/html/acheckconf.html";
                 break;
             case 4:
                 document.getElementById("frame").src = "/html/addmeetingroom.html";

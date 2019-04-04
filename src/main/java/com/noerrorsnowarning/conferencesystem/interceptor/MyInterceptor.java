@@ -12,10 +12,23 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         boolean flag = true;
-        String session = (String) request.getSession().getAttribute("Sname");
-        if (session == null) {
-            String url = request.getRequestURI();
-            String[] array = url.split("/");
+        String user = (String) request.getSession().getAttribute("Sname");
+        String admin = (String) request.getSession().getAttribute("Sname");
+        String url = request.getRequestURI();
+        String[] array = url.split("/");
+        if ((array.length > 1) && (array[1].equals("admin"))) {
+            if (admin == null) {
+                response.sendRedirect("/admin/login/");
+                flag = false;
+            }
+        } else if (user == null) {
+            response.sendRedirect("/login/");
+            flag = false;
+        }
+        return flag;
+
+        /*if (session == null) {
+
 
             //根据url来判断登录是admin还是普通用户
             if ((array.length > 1) && (array[1].equals("admin"))) {
@@ -24,10 +37,8 @@ public class MyInterceptor implements HandlerInterceptor {
                 response.sendRedirect("/login/");
             }
             flag = false;
-        } else {
-            flag = true;
         }
-        return flag;
+        return flag;*/
     }
 
     @Override

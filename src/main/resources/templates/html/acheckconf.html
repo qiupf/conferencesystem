@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+
+    <link rel="stylesheet" href="/css/mymeeting1.css"/>
+</head>
+
+<body>
+<table class="delete">
+    <caption>已预订会议室</caption>
+    <tr>
+        <th>日期</th>
+        <th>时间</th>
+        <th>会议室</th>
+        <th>地址</th>
+        <th>主题</th>
+        <th>申请人</th>
+        <th>状态</th>
+        <th>批准</th>
+        <th>拒绝</th>
+    </tr>
+    <tr id="001" th:each="meeting : ${allMeetingList}">
+        <td id="001_5" th:text="${meeting.Cstarttime}"/>
+        <td id="001_11" th:text="${meeting.starttime}"/>
+        <td id="001_1" th:text="${meeting.RoomID}"/>
+        <td id="001_3" th:text="${meeting.Raddress}"/>
+        <td id="001_9" th:text="${meeting.Cname}"/>
+        <td id="001_8" th:text="${meeting.RSID}"/>
+        <td>成功</td>
+        <td><a href="#">批准</a></td>
+        <td><a href="#">拒绝</a></td>
+    </tr>
+</table>
+<br>
+</body>
+</html>

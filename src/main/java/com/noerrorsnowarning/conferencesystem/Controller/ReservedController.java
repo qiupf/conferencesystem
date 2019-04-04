@@ -35,6 +35,17 @@ public class ReservedController {
         return "html/mymeeting1";
     }
 
+    @RequestMapping(value = "/html/acheckconf.html", method = RequestMethod.GET)
+    public String acheckconfHtml(Model model, HttpServletRequest request) {
+
+        //返回已预定会议室
+        List<Reserved> allMeetinfList = reservedService.getAll();
+
+        model.addAttribute("allMeetingList", allMeetinfList);
+
+        return "html/acheckconf";
+    }
+
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(Model model, HttpServletRequest request) {
 

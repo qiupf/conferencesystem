@@ -3,6 +3,7 @@ package com.noerrorsnowarning.conferencesystem.Controller;
 import com.noerrorsnowarning.conferencesystem.Service.*;
 import com.noerrorsnowarning.conferencesystem.domain.ConferenceInfo;
 import com.noerrorsnowarning.conferencesystem.domain.Equipment;
+import com.noerrorsnowarning.conferencesystem.domain.Reserved;
 import com.noerrorsnowarning.conferencesystem.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ public class BookController {
     private EquipmentService equipmentService;
     private RoomAndEquipService roomAndEquipService;
     private ConferenceService conferenceService;
+    private ReservedService reservedService;
 
     @Autowired
     BookController(RoomService roomService,
@@ -35,19 +37,19 @@ public class BookController {
 
     @RequestMapping(value = "/html/book.html", method = RequestMethod.GET)
     public String book(Model model) {
-        model=setModel(model);
+        model = setModel(model);
         return "html/book";
     }
 
 
     @RequestMapping(value = "/getRoom", method = RequestMethod.POST)
-    public String getRoom(HttpServletRequest request,Model model) {
+    public String getRoom(HttpServletRequest request, Model model) {
 
         String roomID = request.getParameter("RoomID");
         String user = (String) request.getSession().getAttribute("Sname");
-        ConferenceInfo conferenceInfo=conferenceService.getCon(roomID,user);
+        ConferenceInfo conferenceInfo = conferenceService.getCon(roomID, user);
         conferenceInfo.setRoomID(roomID);
-        model.addAttribute("conInfo",conferenceInfo);
+        model.addAttribute("conInfo", conferenceInfo);
         return "html/order";
     }
 
@@ -87,35 +89,45 @@ public class BookController {
         return "html/book";
     }
 
-    @RequestMapping(value = "/goTo",method = RequestMethod.POST)
-    public String goTo(HttpServletRequest request){
+    @RequestMapping(value = "/goTo", method = RequestMethod.POST)
+    public String goTo(HttpServletRequest request) {
 
-        String day=request.getParameter("day");
-        String hour=request.getParameter("hour");
-        String time=request.getParameter("time");
-        System.out.println(day+" "+hour+" "+time);
+        String day = request.getParameter("day");
+        String hour = request.getParameter("hour");
+        String time = request.getParameter("time");
+        System.out.println(day + " " + hour + " " + time);
 
         return "html/order";
     }
 
-    @RequestMapping(value = "/html/book2.html",method = RequestMethod.GET)
-    public String get(){
+    @RequestMapping(value = "/html/book2.html", method = RequestMethod.GET)
+    public String get() {
         return "html/book2";
     }
 
     @RequestMapping(value = "/html/bookadmin.html", method = RequestMethod.GET)
     public String bookadmin(Model model) {
-        model=setModel(model);
+        model = setModel(model);
         return "html/bookadmin";
     }
 
-    @RequestMapping(value = "/sendOrder",method = RequestMethod.POST)
-    public String sendOrder(HttpServletRequest request){
+    @RequestMapping(value = "/sendOrder", method = RequestMethod.POST)
+    public String sendOrder(HttpServletRequest request) {
         conferenceService.insertConference(request);
         return "html/book";
     }
 
-    private Model setModel(Model model){
+    @RequestMapping(value = "/cancel", method = RequestMethod.GET)
+    public String cancel(Model model, HttpServletRequest request) {
+        String id = (String) request.getSession().getAttribute("Sname");
+        reservedService.delete("Sname");
+        List<Reserved> meetingList = reservedService.getReserved(id);
+        model.addAttribute("meetingList", meetingList);
+        return "html/mymeeting1";
+
+    }
+
+    private Model setModel(Model model) {
 
         List<Room> roomList = roomService.getRoom();
         List<Equipment> equipmentList = equipmentService.getEquips();

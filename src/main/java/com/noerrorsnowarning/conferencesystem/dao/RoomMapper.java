@@ -1,10 +1,7 @@
 package com.noerrorsnowarning.conferencesystem.dao;
 
 import com.noerrorsnowarning.conferencesystem.domain.Room;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -32,6 +29,10 @@ public interface RoomMapper {
     List<Room> findRoomByIdOrAddress(@Param("roomID") String roomID,
                                      @Param("roomAddress") String roomAddress);
 
+    @Select("select * from Room " +
+            "where RoomID = #{roomID} ")
+    Room findRoomById(@Param("roomID") String roomID);
+
     @Select("select r.* from " +
             "(select * from Room where Equip regexp #{equip}) r " +
             "where Rstarttime <= #{startTime} " +
@@ -51,6 +52,20 @@ public interface RoomMapper {
                 @Param("name") String name,
                 @Param("num") int num,
                 @Param("equip") String equip);
+
+    @Update("update room set" +
+            " Raddress=#{name}," +
+            " Rcapacity=#{num}," +
+            " Equip=#{equip}" +
+            " where RoomID=#{id}")
+    int modify(@Param("name") String name,
+               @Param("num") int num,
+               @Param("equip") String equip,
+               @Param("id") String id);
+
+    @Delete("delete from room where " +
+            "RoomID=#{rid}")
+    int remove(@Param("rid") String rid);
 
 
 }

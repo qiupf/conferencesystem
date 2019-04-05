@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>order</title>
+</head>
+<body>
+<div style="border-style: solid;border-width: 1px;width: 800px;height: 300px">
+    <form th:action="@{/html/modifyroom}" method="post">
+        <table>
+            <tr>
+                <td>会议室编号：</td>
+                <td><input type="text" name="roomID" th:value="${room.RoomID}" readonly="readonly"></td>
+            </tr>
+            <tr>
+                <td>会议室名称：</td>
+                <td><input type="text" name="roomName" th:value="${room.Raddress}"></td>
+            </tr>
+            <tr>
+                <td>会议室容量：</td>
+                <td><input type="text" name="roomNum" th:value="${room.Rcapacity}"></td>
+            </tr>
+            <tr>
+                <td>投影仪数量：</td>
+                <td><input type="text" name="tnum" th:value="${projector}"></td>
+            </tr>
+            <tr>
+                 <td>话筒数量：</td>
+                 <td><input type="text" name="hnum" th:value="${voice}"></td>
+             </tr>
+            <tr>
+                 <td>网络通话数量：</td>
+                 <td><input type="text" name="wnum" th:value="${web}"></td>
+             </tr>
+            <tr>
+            <td>
+            <button style="cursor: pointer">修改</button>
+</td>
+</tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

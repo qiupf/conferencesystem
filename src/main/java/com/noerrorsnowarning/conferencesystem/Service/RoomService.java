@@ -14,8 +14,14 @@ public interface RoomService {
 
     List<Room> findRoomByIdOrAddress(String id, String address);
 
-    List<Room> findRoomEquipByOther(String startTime, String endTime, String num,String[] equip,int numEquip);
+    List<Room> findRoomEquipByOther(String startTime, String endTime, String num, String[] equip, int numEquip);
 
-    int addRoom(String id,String name,String num,String equip);
+    int addRoom(String id, String name, String num, String equip);
+
+    int modifyRoom(String name, String num, String equip, String id);
+
+    int removeRoom(String id);
+
+    Room findRoomById(String id);
 
 }

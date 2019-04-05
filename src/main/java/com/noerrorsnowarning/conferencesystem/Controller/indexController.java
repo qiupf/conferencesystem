@@ -92,6 +92,10 @@ public class indexController {
         model.addAttribute("equipList", equipmentList);
 
         roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
+        for (Room room : roomList) {
+            room.setRemoveurl("removeroom?roomID=" + room.getRoomID());
+            room.setModifyurl("modify?roomID=" + room.getRoomID());
+        }
         model.addAttribute("roomList", roomList);
         return "html/addmeetingroom.html";
     }

@@ -38,7 +38,12 @@ public class AddRoomController {
         model.addAttribute("equipList", equipmentList);
         List<Room> roomList = roomService.getRoom();
 
-        roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
+
+        for (Room room : roomList) {
+            room.setRemoveurl("removeroom?roomID=" + room.getRoomID());
+            System.out.println(room.getRemoveurl());
+            //room.setModifyurl("modifyroom?RoomID=" + room.getRoomID());
+        }
         model.addAttribute("roomList", roomList);
 
         return "html/addmeetingroom.html";
@@ -53,7 +58,7 @@ public class AddRoomController {
         String tnum = request.getParameter("tnum");
         String hnum = request.getParameter("hnum");
         String wnum = request.getParameter("wnum");
-        String s=""+tnum+hnum+wnum;
+        String s = "" + tnum + hnum + wnum;
         roomService.addRoom(id, name, num, s);
 
         List<Equipment> equipmentList = equipmentService.getEquips();
@@ -63,6 +68,36 @@ public class AddRoomController {
         model.addAttribute("roomList", roomList);
         return "redirect:/html/addmeetingroom.html";
     }
+
+    @RequestMapping(value = "/modifyroom", method = RequestMethod.POST)
+    @Access(auths = {"admin"})
+    public String modifyroom(HttpServletRequest request, Model model) throws ParseException {
+        String id = request.getParameter("roomID");
+        String name = request.getParameter("roomName");
+        String num = request.getParameter("roomNum");
+        String tnum = request.getParameter("tnum");
+        String hnum = request.getParameter("hnum");
+        String wnum = request.getParameter("wnum");
+        String s = "" + tnum + hnum + wnum;
+        roomService.modifyRoom(name, num, s, id);
+        List<Equipment> equipmentList = equipmentService.getEquips();
+        model.addAttribute("equipList", equipmentList);
+        List<Room> roomList = roomService.getRoom();
+        roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
+        model.addAttribute("roomList", roomList);
+        return "redirect:/html/addmeetingroom.html";
+    }
+
+    @RequestMapping(value = "/removeroom", method = RequestMethod.GET)
+    @Access(auths = {"admin"})
+    public String removeroom(HttpServletRequest request, Model model) throws ParseException {
+        String id = request.getParameter("roomID");
+        roomService.removeRoom(id);
+        List<Room> roomList = roomService.getRoom();
+        model.addAttribute("roomList", roomList);
+        return "redirect:/html/addmeetingroom.html";
+    }
+
 
     @RequestMapping(value = "/add1", method = RequestMethod.POST)
     @Access(auths = {"admin"})
@@ -79,4 +114,21 @@ public class AddRoomController {
         return "html/addroomcontent.html";
     }
 
+    @RequestMapping(value = "/modify", method = RequestMethod.GET)
+    @Access(auths = {"admin"})
+    public String modify(HttpServletRequest request, Model model) throws ParseException {
+        String id = request.getParameter("roomID");
+        Room room = roomService.findRoomById(id);
+        model.addAttribute("room", room);
+        String equip = room.getEquip();
+        model.addAttribute("projector", equip.charAt(0));
+        model.addAttribute("voice", equip.charAt(1));
+        model.addAttribute("web", equip.charAt(2));
+        return "/html/amodifyroom.html";
+    }
+
+    @RequestMapping(value = "/amodifyroom.html", method = RequestMethod.GET)
+    public String mm(Model model) {
+        return "html/amodifyroom.html";
+    }
 }

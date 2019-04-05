@@ -97,7 +97,6 @@ public class BookController {
         String day = request.getParameter("day");
         String hour = request.getParameter("hour");
         String time = request.getParameter("time");
-        System.out.println(day + " " + hour + " " + time);
 
         return "html/order";
     }
@@ -114,7 +113,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/sendOrder", method = RequestMethod.POST)
-    public String sendOrder(HttpServletRequest request,Model model) {
+    public String sendOrder(HttpServletRequest request, Model model) {
         conferenceService.insertConference(request);
         setModel(model);
         return "html/book";
@@ -122,7 +121,7 @@ public class BookController {
 
     @RequestMapping(value = "/html/cancel", method = RequestMethod.GET)
     public String cancel(Model model, HttpServletRequest request) {
-        String meetingID=request.getParameter("meetingID");
+        String meetingID = request.getParameter("meetingID");
         reservedService.delete(meetingID);
         String id = (String) request.getSession().getAttribute("Sname");
         List<Reserved> meetingList = reservedService.getReserved(id);
@@ -139,6 +138,7 @@ public class BookController {
         model.addAttribute("equipList", equipmentList);
 
         roomList = roomAndEquipService.roomAndEquip(roomList, equipmentList);
+
 
         model.addAttribute("roomList", roomList);
         return model;

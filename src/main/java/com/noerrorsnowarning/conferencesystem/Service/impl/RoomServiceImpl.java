@@ -108,6 +108,12 @@ public class RoomServiceImpl implements RoomService {
         return roomMapper.addRoom(id, name, n, equip);
     }
 
+    @Override
+    public int modifyRoom(String name, String num, String equip, String id) {
+        int n = Integer.valueOf(num);
+        return roomMapper.modify(name, n, equip, id);
+    }
+
     private Room getParameter(HttpServletRequest request) throws ParseException {
 
         String id = request.getParameter("meetingroom_ID");
@@ -144,4 +150,14 @@ public class RoomServiceImpl implements RoomService {
         return room;
     }
 
+
+    @Override
+    public int removeRoom(String id) {
+        return roomMapper.remove(id);
+    }
+
+    @Override
+    public Room findRoomById(String id) {
+        return roomMapper.findRoomById(id);
+    }
 }

@@ -13,6 +13,8 @@ public class Room {
     private Time Rendtime;
     private String Equip;
     private String equips;
+    private String removeurl;
+    private String modifyurl;
 
     public Room(String RoomID, String Raddress, Integer Rcapacity, Time Rstarttime, Time Rendtime){
 
@@ -79,5 +81,21 @@ public class Room {
 
     public void setEquips(String equips) {
         this.equips = equips;
+    }
+
+    public String getRemoveurl() {
+        return removeurl;
+    }
+
+    public void setRemoveurl(String removeurl) {
+        this.removeurl = removeurl;
+    }
+
+    public String getModifyurl() {
+        return modifyurl;
+    }
+
+    public void setModifyurl(String modifyurl) {
+        this.modifyurl = modifyurl;
     }
 }
